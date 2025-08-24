@@ -25,4 +25,4 @@
 
 **Información de contacto**:
 
-- joaquin.salinas.874@mi.unc.edu.ar
+-joaquin.salinas.874@mi.unc.edu.ar

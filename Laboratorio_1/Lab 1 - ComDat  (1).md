@@ -79,13 +79,15 @@ a. Se trata de una transmisión serie sincrónica, donde ambas unidades comparte
 
 b. Este montaje no está pensado para la comunicación de datos bidireccional, sino que está pensado para enlaces sencillos; es decir enlaces de un solo sentido y velocidad moderada.En consecuencia, tiene  las siguiente limitaciones:
 
-⦁	ancho de banda acotado por la calidad de la línea única de datos,
+⦁	ancho de banda acotado por la calidad de la línea única de datos
+
 ⦁	imposibilidad de enviar y recibir al mismo tiempo.
 
 En este sentido , para una comunicación bidirecional lo ideal sería una comunicación full-duplex; la cual permite enviar y recibir datos al mismo tiempo por el mismo canal o por canales separados redunciendo así la latencia y aumentado el throughput.
 
 c.   
-![](imagen9.png)
+
+![](Imagen9.png)
 
 d. Para garantizar una lectura clara dentro de los niveles 1 y 0, se toman muestras en el centro lejos de la pendiente de subida o bajada. Para ello, se mide en el centro de cada bit; si los límites están en T0,T1, etc.. Se toman  muestras en T0 + (0.5 x duración del bit)  ,T1+ (0.5 x duración del bit)  y así sucesivamente. 
 

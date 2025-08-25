@@ -114,7 +114,7 @@ C) Además de PSK, tenemos otras técnicas para la modulación de señales de fo
 
 *	QAM (Quadrature Amplitude Modulation): Se varía tanto la fase como la amplitud de una señal portadora, utilizando dos señales moduladas en AM
 
-    D) Bit Error Rate es la relación entra la cantidad total de bits recibidos incorrectamente divididos en la cantidad total de bits transmitidos. Una relación BER baja es crucial para la calidad y fiabilidad de la transmisión de datos, ya que se ve afectada por factores como el ruido, la interferencia y la calidad del medio de transmisión. 
+D) Bit Error Rate es la relación entra la cantidad total de bits recibidos incorrectamente divididos en la cantidad total de bits transmitidos. Una relación BER baja es crucial para la calidad y fiabilidad de la transmisión de datos, ya que se ve afectada por factores como el ruido, la interferencia y la calidad del medio de transmisión. 
  Según la información obtenida, las técnicas de modulación digital con menor BER son BPSK (PSK binario) y QPSK. La primera por ser muy robusta en canales ruidosos, y la segunda permite la transmisión del doble de bits. 
 
 

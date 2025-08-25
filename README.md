@@ -26,4 +26,5 @@
 **Información de contacto**:
 -candela.benavides@mi.unc.edu.ar
 -joaquin.salinas.874@mi.unc.edu.ar
+-rafael.farinas@mi.unc.edu.ar
 

@@ -1,6 +1,13 @@
 Laboratorio N1 \- Comunicaciones de Datos 2025 
+# Repaso de fundamentos esenciales e introducción a Packet Tracer
 
-# Resumen 
+## Resumen 
+
+
+## Introducción
+
+En este trabajo revisaremos principios fundamentales tales como ondas electromagnéticas, modulación/demodulación, señales de tiempo continuo y señales de tiempo discreto y su aplicación en los sistemas de comunicación modernos. Además, se analizan fenómenos asociados a la transmisión inalámbrica, como la atenuación y limitación del espectro, y se comparan distintas técnicas de modulación digital en función de su robustez y eficiencia. 
+Por último, realizamos pruebas prácticas con Cisco Packet Tracer, configurando un router inalámbrico y observamos la conectividad y cobertura en diferentes escenarios.   
 
 	
 

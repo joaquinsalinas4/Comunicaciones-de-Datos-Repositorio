@@ -2,7 +2,7 @@
 
 **Integrantes del grupo**:
 
-- _Avila Facuando E_
+- _Avila Facundo E_
 
 - _Benavides María C_
 

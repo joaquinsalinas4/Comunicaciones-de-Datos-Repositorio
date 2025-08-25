@@ -89,6 +89,8 @@ c.
 
 ![](Imagen9.png)
 
+En la siguiente imagen se puede apreciar la codificación binaria en 8 bits de la letra "p" segun el codigo ASCII. La cual va cambiando según los pulsos del reloj.
+
 d. Para garantizar una lectura clara dentro de los niveles 1 y 0, se toman muestras en el centro lejos de la pendiente de subida o bajada. Para ello, se mide en el centro de cada bit; si los límites están en T0,T1, etc.. Se toman  muestras en T0 + (0.5 x duración del bit)  ,T1+ (0.5 x duración del bit)  y así sucesivamente. 
 
 

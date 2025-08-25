@@ -179,3 +179,8 @@ Fig 4.8
 Se hicieron 2 pruebas con la notebook en diferentes posiciones dentro de la oficina: 
 Se observo que al colocar la intensidad de la señal Wi-Fi disminuye a medida que se aleja la notebook del router. En este caso al colocar la notebook casi al límite del área de cobertura de la señal Wi-Fi la intensidad era aproximadamente del 5%, sin embargo, se mantuvo una conexión estable y no hubo perdida de paquetes. No obstante, en un caso real, esta intensidad de la señal podría generar perdida de paquetes, o una menor velocidad.
 Por otro lado, en la segunda prueba, al colocar la notebook fuera del área de cobertura de la señal de Wi-Fi, ningún paquete enviado fue recibido (100% de perdida), indicando que se perdió el enlace con el router.
+
+
+## Conclusión  
+
+Mediante este trabajo pudimos comprender cómo las ondas electromagnéticas hacen posible la comunicación inalámbrica, teniendo en cuenta la relación que existe entre frecuencia, alcance y calidad de señal. También, analizamos diferentes técnicas de modulación y comprobamos gracias a Cisco Packet Tracer la configuración y cobertura de una red Wi-Fi.

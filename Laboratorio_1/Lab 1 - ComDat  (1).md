@@ -97,6 +97,22 @@ d. Para garantizar una lectura clara dentro de los niveles 1 y 0, se toman muest
 No es conveniente la transmisión de señales escalonadas (como un pulso rectangular o un step) de manera inalámbrica debido a que un escalón en el tiempo equivale a una función con contenido espectral infinito en frecuencia (por la Transformada de Fourier, un escalón tiene componentes que se extienden hasta el infinito). En la vida real, ninguna antena ni canal puede transmitir un rango infinito de frecuencias. Esto provoca que se distorsione la señal y se recorten las altas frecuencias, por lo tanto, no va a ser un escalón perfecto. 
  Por otro lado, al ocupar un ancho de banda tan grande, desperdicia recursos de espectro, que en comunicaciones inalámbricas son limitados. En estos casos se utilizan pulsos con banda limitada, por ejemplo, coseno realzado. 
  Por último, la distorsión por el canal hace que los escalones se ensucien y se mezclen entre sí. Esto provoca interferencia intersímbolo (ISI), lo que dificulta la detección de los símbolos.
+ 
+![](Imagen11.png)
+
+A)	 La señal representada en este gráfico está modulada mediante la técnica FSK (Phase Shift Keying), ya que la información de la señal a transmitir está en los cambios de fase de la señal portadora.
+
+B)	 
+
+![](Imagen11.png)
+
+C) Además de PSK, tenemos otras técnicas para la modulación de señales de forma digital:
+
+Ø	ASK (Amplitude Shift Keying): Cambia la amplitud de la portadora en función de los bits. Con un 1 hay presencia de portadora y con un 0 la señal es plana (cero).
+Ø	FSK (Frequency Shift Keying): Principio: Cambia la frecuencia de la portadora. Se desfasa 180° si el bit es un 1. 
+Ø	QAM (Quadrature Amplitude Modulation): Se varía tanto la fase como la amplitud de una señal portadora, utilizando dos señales moduladas en AM
+    D) Bit Error Rate es la relación entra la cantidad total de bits recibidos incorrectamente divididos en la cantidad total de bits transmitidos. Una relación BER baja es crucial para la calidad y fiabilidad de la transmisión de datos, ya que se ve afectada por factores como el ruido, la interferencia y la calidad del medio de transmisión. 
+ Según la información obtenida, las técnicas de modulación digital con menor BER son BPSK (PSK binario) y QPSK. La primera por ser muy robusta en canales ruidosos, y la segunda permite la transmisión del doble de bits. 
 
 
 ## Cisco Packet Tracer

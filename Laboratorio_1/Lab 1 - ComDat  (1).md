@@ -74,7 +74,8 @@ Son aquellas definidas sólo en instantes específicos, obtenidas usualmente med
       3. En este caso se ve mucho menos afectada, es decir que la señal casi no se pierde, por eso es ideal para largas distancias   
            
 
- Cisco Packet Tracer
+## Cisco Packet Tracer
+
  A continuación en Packet Tracer se configuró un router inalámbrico y se conectó a una PC mediante enlace cableado y a una notebook mediante Wi-Fi.
 
  ![](Imagen1.png)

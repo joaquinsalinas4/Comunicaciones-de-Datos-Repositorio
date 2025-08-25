@@ -93,6 +93,10 @@ En la siguiente imagen se puede apreciar la codificación binaria en 8 bits de l
 
 d. Para garantizar una lectura clara dentro de los niveles 1 y 0, se toman muestras en el centro lejos de la pendiente de subida o bajada. Para ello, se mide en el centro de cada bit; si los límites están en T0,T1, etc.. Se toman  muestras en T0 + (0.5 x duración del bit)  ,T1+ (0.5 x duración del bit)  y así sucesivamente. 
 
+## Consigna tres
+No es conveniente la transmisión de señales escalonadas (como un pulso rectangular o un step) de manera inalámbrica debido a que un escalón en el tiempo equivale a una función con contenido espectral infinito en frecuencia (por la Transformada de Fourier, un escalón tiene componentes que se extienden hasta el infinito). En la vida real, ninguna antena ni canal puede transmitir un rango infinito de frecuencias. Esto provoca que se distorsione la señal y se recorten las altas frecuencias, por lo tanto, no va a ser un escalón perfecto. 
+ Por otro lado, al ocupar un ancho de banda tan grande, desperdicia recursos de espectro, que en comunicaciones inalámbricas son limitados. En estos casos se utilizan pulsos con banda limitada, por ejemplo, coseno realzado. 
+ Por último, la distorsión por el canal hace que los escalones se ensucien y se mezclen entre sí. Esto provoca interferencia intersímbolo (ISI), lo que dificulta la detección de los símbolos.
 
 
 ## Cisco Packet Tracer

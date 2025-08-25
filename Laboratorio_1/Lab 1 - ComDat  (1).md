@@ -74,3 +74,55 @@ Son aquellas definidas sólo en instantes específicos, obtenidas usualmente med
       3. En este caso se ve mucho menos afectada, es decir que la señal casi no se pierde, por eso es ideal para largas distancias   
            
 
+ Cisco Packet Tracer
+ A continuación en Packet Tracer se configuró un router inalámbrico y se conectó a una PC mediante enlace cableado y a una notebook mediante Wi-Fi.
+
+ ![](Imagen1.png)
+
+Fig 4.1
+
+
+La frecuencia en la que opera el router inalambrico es de 2.4GHz. Corresponde a la región de microondas del espectro electromagnético dentros de las ondas de radio y opera en la banda ISM (Industrial, Scientific and Medical) de 2,4 GHz.
+
+![](Imagen2.png) 
+
+Fig 4.2
+
+
+![](Imagen3.png)
+
+Fig 4.3
+
+
+Conexión en los dispositivos finales
+
+
+![](Imagen4.png)
+
+Fig 4.4
+
+![](Imagen5.png)
+
+Fig 4.5
+
+La PC obtuvo la dirección IP 192.168.0.102 y la notebook obtuvo la dirección 192.168.0.101 mediante DHCP, ambas con mascara 255.255.255.0 y puerta de enlace de 192.168.0.1.
+Se hicieron a su vez pruebas de conectividad mediante ping, confirmando la comunicación entre ambos hosts con el router inalámbrico y validando que la configuración funciona correctamente. 
+Al ejecutar tracert entre la PC y la notebook se puede observar un único salto directo hacia el host destino y esto ocurre debido a que ambos dispositivos se encuentran en la misma subred, por lo que el trafico no necesita pasar por un router adicional.
+
+**Análisis de cobertura Wi-Fi en vista física**
+
+![](Imagen6.png)
+
+Fig 4.6
+
+![](Imagen7.png)
+
+Fig 4.7
+
+![](Imagen8.png)
+
+Fig 4.8
+
+Se hicieron 2 pruebas con la notebook en diferentes posiciones dentro de la oficina: 
+Se observo que al colocar la intensidad de la señal Wi-Fi disminuye a medida que se aleja la notebook del router. En este caso al colocar la notebook casi al límite del área de cobertura de la señal Wi-Fi la intensidad era aproximadamente del 5%, sin embargo, se mantuvo una conexión estable y no hubo perdida de paquetes. No obstante, en un caso real, esta intensidad de la señal podría generar perdida de paquetes, o una menor velocidad.
+Por otro lado, en la segunda prueba, al colocar la notebook fuera del área de cobertura de la señal de Wi-Fi, ningún paquete enviado fue recibido (100% de perdida), indicando que se perdió el enlace con el router.

@@ -2,7 +2,8 @@ Laboratorio N1 \- Comunicaciones de Datos 2025
 # Repaso de fundamentos esenciales e introducción a Packet Tracer
 
 ## Resumen 
-
+Este trabajo integró contenidos teóricos y prácticos de comunicaciones digitales, abordando conceptos como ondas electromagnéticas, modulación y demodulación, y señales de tiempo continuo y discreto.
+Se analizaron gráficos para calcular frecuencia y longitud de onda, identificar regiones del espectro electromagnético según la UIT y comprender el fenómeno de atenuación. A su vez, se estudiaron esquemas de transmisión serie, codificación binaria y técnicas de modulación digital comoo PSK, ASK y FSK, junto con el análisis del BER como métrica de calidad. Por último, se aplicó lo aprendido en una simulación con Cisco Packet Tracer, configurando una red inalámbrica, comprobando conectividad entre dispositivos y evaluando la cobertura de la señal Wi-Fi en función de la distancia.
 
 ## Introducción
 

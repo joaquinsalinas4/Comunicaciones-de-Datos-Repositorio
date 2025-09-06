@@ -1,4 +1,8 @@
-# Laboratorio N°1
+# Laboratorios de la materia Comunicaciones de datos
+
+## Infomarcion general del grupo
+
+**Nombre del Grupo**: WAN Piece
 
 **Integrantes del grupo**:
 
@@ -9,10 +13,6 @@
 - _Fariñas Rafael_
 
 - _Salinas Joaquín A_
-
-
-**Grupo**: WAN Piece
-
 
 **Universidad Nacional de Córdoba**
 

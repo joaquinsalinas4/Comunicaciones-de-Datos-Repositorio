@@ -10,7 +10,7 @@
 
 - _Benavides María C_
 
-- _Fariñas Rafael_
+- _Fariñas Gómez Rafael_
 
 - _Salinas Joaquín A_
 

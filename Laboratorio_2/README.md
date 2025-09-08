@@ -1,7 +1,7 @@
 ## TRABAJO PRÁCTICO N° 2 ~ Más conceptos fundamentales de capa física y capa de enlace de datos.
 
 ## Introducción 
-
+En este trabajo práctico buscamos explorar conceptos esenciales de las capas Física y de Enlace de Datos, a través del análisis de fenómenos físicos que afectan la transmisión de datos y mediante el uso de herramientas como Wireshark. En este sentido, procuramos comprender cómo se estructuran, transmiten y analizan los datos de una red, reforzando tanto el conocimiento técnico como la mirada crítica sobre su trazabilidad y seguridad.
 ## Desarrollo
 
 ### Consigna 1: 

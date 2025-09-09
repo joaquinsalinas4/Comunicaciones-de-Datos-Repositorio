@@ -152,13 +152,14 @@ Esto indica:
 En la barra de filtros de Wireshark (barra verde en la parte superior) ip.addr == 192.168.100.1
 
 **iii) Ejecución de un ping a la puerta de enlace y monitorear Wireshark**
-      **1. Consultas DNS (azules)**
-      **2.Paquetes ICMP (ping) en color rosa, enviados desde la PC 192.168.100.16 hacia el router 192.168.100.1 y viceversa**
+      1. Consultas DNS (azules)
+      2.Paquetes ICMP (ping) en color rosa, enviados desde la PC 192.168.100.16 hacia el router 192.168.100.1 y viceversa
+      
  **iv) Extracción y documentación los datos de un paquete en formato hexadecimal**
 ![](formato_hexadecimal.png)
 
 ---
 #### d) Dirección MAC del dispositivo 
-
+![](direcciónMAC.png)
 
 

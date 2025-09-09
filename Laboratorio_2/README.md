@@ -167,14 +167,22 @@ En la barra de filtros de Wireshark (barra verde en la parte superior) ip.addr =
 
 ![](imagen3e_1.jpeg) 
 ![](imagen3e_5.jpeg)
+
+
 Listado de paquetes ICM capturados en Wireshark, observamos el intercambio de mensajes entre las dos dircciones IP. Distinguimos los Echo Request enviados y los Echo reply son los recibidos. 
+
+
 
 ![](imagen3e_hexa.jpeg)
 Documentación del contenido de un paquete en hexadecimal
 
+
+
 ![](imagen3e_2.jpeg)
 ![](imagen3e_3.jpeg)
 ![](imagen3e_4.jpeg)
+
+
 En esta imagen observamos la dirección MAC de destino b0:a7:b9:df:1a:fd. y la de origen, la cual pertenece a la PC que inicio el ping b0:a7:b9:df:1a:fd 
 
 

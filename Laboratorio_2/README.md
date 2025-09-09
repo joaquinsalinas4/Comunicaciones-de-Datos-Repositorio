@@ -134,7 +134,7 @@ En cuanto a la **SNR (Signal-to-Noise Ratio)**:
 
 #### c) Análisis en Wireshark
 
-![Wireshark](Laboratorio_2/Punto-3c.png)
+![](Punto-3c.png)
 **i) Puerta de enlace predeterminada:**
 
 Se identificó la puerta de enlace predeterminada utilizando el siguiente comando en la terminal:
@@ -155,6 +155,10 @@ En la barra de filtros de Wireshark (barra verde en la parte superior) ip.addr =
       **1. Consultas DNS (azules)**
       **2.Paquetes ICMP (ping) en color rosa, enviados desde la PC 192.168.100.16 hacia el router 192.168.100.1 y viceversa**
  **iv) Extracción y documentación los datos de un paquete en formato hexadecimal**
+![](formato_hexadecimal.png)
+
+---
+#### d) Dirección MAC del dispositivo 
 
 
 

@@ -163,3 +163,61 @@ En la barra de filtros de Wireshark (barra verde en la parte superior) ip.addr =
 ![](direcciónMAC.png)
 
 
+### Consigna 4
+# Seguridad de un dispositivo en la red y trazabilidad de una dirección MAC
+
+## 1. Seguridad de un dispositivo en la red
+
+La seguridad de un dispositivo de la red implica proteger distintos tipos de acceso al dispositivo:
+
+- **Acceso físico**: Restringir quién puede conectar cables o tocar el equipo (switch, router).
+- **Acceso lógico**: Uso de contraseñas seguras en consola, VTY (acceso remoto), y modo privilegiado con contraseña. Uso de encriptación (**SSH en lugar de Telnet**).
+- **Seguridad a nivel de switch (capa 2)**: Limitar las direcciones MAC que pueden conectarse a un puerto físico, prevenir ataques de **MAC flooding**, donde un atacante llena la tabla MAC del switch.
+- **Firewall**: Implementación de firewalls para aislar el tráfico hacia el host y hacia la red.
+
+---
+
+## 2. Trazabilidad de la dirección MAC
+
+La trazabilidad de la dirección MAC se produce de distintas formas:
+
+- **En un switch**: se mantiene una **tabla CAM (Content Addressable Memory)** donde se asocian direcciones MAC con puertos físicos.
+- **En un router**: mediante la **tabla ARP**, se asocian direcciones IP con direcciones MAC.
+- **En toda la red**: siguiendo los saltos de switch en switch, se puede rastrear dónde está conectada físicamente una MAC. 
+
+---
+
+## 3. IMEI vs Dirección MAC
+
+- **IMEI (International Mobile Equipment Identity)**:  
+  Número único de **15 dígitos** que identifica a cada dispositivo de telefonía móvil. Está grabado en el hardware por el fabricante y se utiliza en redes móviles (LTE, 5G).  
+  Sus principales funciones:
+  - Identificar el equipo en la red.
+  - Bloquearlo en caso de pérdida o robo (**lista negra de IMEIs**).
+  - Autorizar o denegar su acceso.
+
+- **Relación con la dirección MAC**:  
+  Ambos son **identificadores únicos de hardware**, pero en **redes diferentes**:
+  - **IMEI** → identifica el *dispositivo móvil* en la red de la operadora celular.  
+  - **MAC** → identifica la *tarjeta de red* en redes locales (WiFi, Ethernet, Bluetooth).  
+
+Ambos son claves para **seguridad y trazabilidad**.
+
+---
+
+## 4. VPN y dirección MAC
+
+**¿Una VPN oculta la dirección MAC del dispositivo?**
+
+- La respuesta es **sí, pero con matices**:  
+  - La **dirección MAC** solo se usa en la **red local (LAN o WLAN)**, es decir, entre el dispositivo final y el primer salto (switch o router WiFi).  
+  - Cuando el tráfico sale a Internet, lo que ven los servidores es la **dirección IP pública**, no la MAC.  
+  - La dirección MAC **no viaja más allá del router**, ya que en cada salto es reemplazada por la del siguiente equipo de capa 2.  
+
+- Una **VPN** oculta la **dirección IP real hacia Internet**.  
+  - **Dentro de la LAN**: el router o switch sigue viendo la MAC real, ya que sin ella no es posible comunicarse en la red local.  
+  - **Fuera de la LAN (Internet)**: la MAC nunca viaja, uses VPN o no.  
+
+✅ **Conclusión**:  
+Una VPN no “oculta” la dirección MAC, ya que esta nunca sale de la red local.  
+Lo único que protege realmente una VPN es la **IP pública** y el **contenido del tráfico**.

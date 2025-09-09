@@ -162,6 +162,25 @@ En la barra de filtros de Wireshark (barra verde en la parte superior) ip.addr =
 #### d) Dirección MAC del dispositivo 
 ![](direcciónMAC.png)
 
+--- 
+#### e ) Repetir los ejercicios c) y d), pero comunicándote con otra computadora 
+
+![](imagen3e_1.jpeg) 
+![](imagen3e_5.jpeg)
+Listado de paquetes ICM capturados en Wireshark, observamos el intercambio de mensajes entre las dos dircciones IP. Distinguimos los Echo Request enviados y los Echo reply son los recibidos. 
+
+![](imagen3e_hexa.jpeg)
+Documentación del contenido de un paquete en hexadecimal
+
+![](imagen3e_2.jpeg)
+![](imagen3e_3.jpeg)
+![](imagen3e_4.jpeg)
+En esta imagen observamos la dirección MAC de destino b0:a7:b9:df:1a:fd. y la de origen, la cual pertenece a la PC que inicio el ping b0:a7:b9:df:1a:fd 
+
+
+![](MAC.jpeg)
+Dirección MAC de la computadora de destino b0:a7:b9:df:1a:fd 
+
 
 ### Consigna 4
 # Seguridad de un dispositivo en la red y trazabilidad de una dirección MAC
@@ -218,6 +237,6 @@ Ambos son claves para **seguridad y trazabilidad**.
   - **Dentro de la LAN**: el router o switch sigue viendo la MAC real, ya que sin ella no es posible comunicarse en la red local.  
   - **Fuera de la LAN (Internet)**: la MAC nunca viaja, uses VPN o no.  
 
-✅ **Conclusión**:  
+ **Conclusión**:  
 Una VPN no “oculta” la dirección MAC, ya que esta nunca sale de la red local.  
 Lo único que protege realmente una VPN es la **IP pública** y el **contenido del tráfico**.

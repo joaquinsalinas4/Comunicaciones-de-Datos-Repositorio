@@ -70,3 +70,80 @@ Y las más resilientes a este fenómeno son:
 La SNR es la relación señal-ruido, que compara la potencia de la señal útil con la potencia del ruido que la acompaña.  Una **SNR alta**indica mejor calidad de transmisión. 
 
 La BER (Bit Error Rate) es la proporción de bits erróneos respecto al total transmitido. La relación entre ambos que una mayor SNR reduce la BER, y viceversa; esto ocurre ya que el reuido interfiere con la correcta detección de los bits.
+
+### Consigna 3
+
+#### a) Ethernet
+Ethernet es la tecnología tradicional para conectar dispositivos en una red de área local (LAN) mediante cableado físico, permitiendo la comunicación entre ellos a través de un conjunto de reglas estandarizadas conocido como protocolo **IEEE 802.3**.  
+Este protocolo define cómo los dispositivos de la red deben formatear, transmitir y recibir datos, de modo que puedan reconocer e interpretar la información de manera correcta.
+
+Ethernet utiliza **tramas de datos** que incluyen direcciones físicas (**MAC**) de origen y destino, y establece un método de acceso al medio compartido.  
+Los cables que constituyen el soporte físico por el cual viajan las tramas son principalmente de **par trenzado (UTP)** o **fibra óptica**.
+
+##### Características principales:
+- **Tecnología de capa de enlace (OSI capa 2):** funciona en el nivel de acceso de la red.  
+- **Direccionamiento MAC:** identificadores únicos de 48 bits asignados a las interfaces de red de los dispositivos. Cada dispositivo posee uno de forma física.  
+- **Medio físico:** generalmente cable UTP, aunque también puede usar fibra óptica.  
+- **Método de acceso:** usa CSMA/CD (*Carrier Sense Multiple Access with Collision Detection*).
+
+##### Estructura de una trama Ethernet:
+Una **trama Ethernet** es la unidad de información que circula por la red y se compone de varios campos:
+
+- **Dirección destino MAC (6 bytes):** identifica a qué dispositivo va el paquete.  
+- **Dirección origen MAC (6 bytes):** dirección física del emisor del paquete.  
+- **Longitud (2 bytes):** indica el protocolo de capa superior (como IPv4, IPv6, etc.).  
+- **Datos (46-1500 bytes):** carga útil, puede ser un paquete IP, entre otros.  
+- **CRC (4 bytes):** código de verificación para detectar errores en la trama.
+
+##### Diferencias entre Ethernet, Fast Ethernet y Gigabit Ethernet:
+La principal diferencia entre estas tecnologías radica en la **velocidad de transmisión** y en la **categoría de cable necesario**:
+
+- **Ethernet:** velocidad de 10 Mbps, utiliza cableado UTP categoría 3 o superior.  
+- **Fast Ethernet:** velocidad de 100 Mbps, requiere cable UTP categoría 5 o superior.  
+- **Gigabit Ethernet:** velocidad de 1000 Mbps, funciona con cables de categoría más alta (Cat 5e, Cat 6, etc.).
+
+Estas tecnologías están presentes en la mayoría de redes domésticas y empresariales.
+
+---
+
+#### b) Cable UTP
+**UTP (Unshielded Twisted Pair)** es un tipo de cable de cobre compuesto por pares de hilos trenzados que **minimiza la interferencia electromagnética** y la **diafonía**, asegurando una conexión estable y confiable.  
+Transmite señales utilizando 4 pares de hilos de cobre, donde cada par maneja un aspecto diferente de la señal.
+
+La construcción de este cable está directamente relacionada con los fenómenos físicos vistos en la **consigna 2**:
+
+- El **trenzado helicoidal** de cada par hace que la interferencia externa afecte a ambos conductores de forma similar.  
+- Al combinar las señales, gran parte del ruido se cancela, reduciendo la **interferencia electromagnética (EMI)**.  
+- También disminuye la **diafonía**, que es la interferencia entre los pares de hilos dentro del mismo cable.  
+- Esto permite mantener la **independencia de cada canal de transmisión**, garantizando mejor calidad de señal.
+
+En cuanto a la **SNR (Signal-to-Noise Ratio)**:
+- A menor interferencia, mayor es la SNR.  
+- Una SNR más alta implica una **menor tasa de error de bits (BER)**.  
+- Por lo tanto, el uso de UTP ayuda a obtener **comunicaciones más confiables**.
+
+> **Nota:**  
+> El cable UTP no cuenta con blindaje metálico, lo que lo hace más vulnerable en entornos con alta interferencia eléctrica.
+
+##### Tipos de cableado:
+- **Cable derecho:** utilizado para conectar dispositivos diferentes (por ejemplo, una PC con un switch).  
+- **Cable cruzado:** antes se utilizaba para conectar dispositivos iguales (por ejemplo, dos PCs), aunque hoy en día muchos equipos detectan automáticamente la conexión.
+
+---
+
+#### c) Análisis en Wireshark
+
+**i) Puerta de enlace predeterminada:**
+
+```bash
+default via 192.168.100.1 dev wlp0s20f3 proto dhcp src 192.168.100.16 metric 600
+
+**ii) Filtrar paquetes de esa dirección IP:**
+se observa en la barra verde en la parte superior donde aparece →  ip.addr == 192.168.100.1
+
+**iii) Ejecución de un ping a la puerta de enlace y monitorear Wireshark**
+      **1. Consultas DNS (azules)**
+      **2.Paquetes ICMP (ping) en color rosa, enviados desde la PC 192.168.100.16 hacia el router 192.168.100.1 y viceversa**
+ **iv) Extracción y documentación los datos de un paquete en formato hexadecimal**
+
+

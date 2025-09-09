@@ -131,19 +131,29 @@ En cuanto a la **SNR (Signal-to-Noise Ratio)**:
 
 ---
 
-#### c) Análisis en Wireshark
 
+#### c) Análisis en Wireshark
+![Uploading Punto-3c.png…]() 
 **i) Puerta de enlace predeterminada:**
 
-```bash
+Se identificó la puerta de enlace predeterminada utilizando el siguiente comando en la terminal:
+
 default via 192.168.100.1 dev wlp0s20f3 proto dhcp src 192.168.100.16 metric 600
 
+Esto indica:
+- La **dirección IP del router** es `192.168.100.1`.
+- La **IP de nuestra computadora** es `192.168.100.16`.
+
+---
+
 **ii) Filtrar paquetes de esa dirección IP:**
-se observa en la barra verde en la parte superior donde aparece →  ip.addr == 192.168.100.1
+
+En la barra de filtros de Wireshark (barra verde en la parte superior) ip.addr == 192.168.100.1
 
 **iii) Ejecución de un ping a la puerta de enlace y monitorear Wireshark**
       **1. Consultas DNS (azules)**
       **2.Paquetes ICMP (ping) en color rosa, enviados desde la PC 192.168.100.16 hacia el router 192.168.100.1 y viceversa**
  **iv) Extracción y documentación los datos de un paquete en formato hexadecimal**
+![Uploading formato_hexadecimal.png…]()
 
 

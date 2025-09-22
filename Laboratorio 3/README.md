@@ -4,6 +4,65 @@
 
 
 
+## Consigna 2
+
+## A) Fibra Óptica Monomodo (SMF) y Multimodo (MMF)
+
+Las dos transmisiones que se están ilustrando son de fibra óptica.  
+En el primer caso, se trata de **fibra óptica monomodo (SMF)** y **fibra óptica multimodo (MMF)**.  
+
+- **Fibra óptica monomodo (SMF):**  
+  - Núcleo de vidrio muy pequeño (≈ 9 micrones).  
+  - Utiliza tecnología láser costosa para enviar un solo rayo de luz.  
+  - Usada en aplicaciones de **larga distancia** (cientos de km), como telefonía de larga distancia y TV por cable.  
+
+- **Fibra óptica multimodo (MMF):**  
+  - Núcleo más grande (50–62,5 micrones).  
+  - Utiliza emisores LED para enviar pulsos de luz en diferentes ángulos.  
+  - Muy usada en **redes LAN**, por su bajo costo.  
+  - Ancho de banda de hasta **10 Gbps** en enlaces de hasta **550 metros**.  
+
+**Diferencias clave:**  
+- La **dispersión** (ensanchamiento de los pulsos de luz en el tiempo) es mucho mayor en multimodo que en monomodo.  
+- Multimodo solo puede alcanzar hasta **500 metros** antes de que la señal se degrade.  
+- Monomodo es más costosa de implementar (láser + núcleo más pequeño), mientras que multimodo es más económica (LEDs y núcleo más ancho).  
+
+---
+
+## B) Relación de la Ley de Snell con la Fibra Óptica
+
+La **ley de Snell** describe cómo la luz cambia de dirección al pasar de un medio a otro con diferente índice de refracción:  
+
+n1 * sin(θ1) = n2 * sin(θ2)
+
+En la fibra óptica:  
+- El **núcleo** tiene un índice de refracción n1  
+- El **revestimiento** tiene un índice n2, con n1 > n2
+
+Cuando la luz entra en la fibra:  
+- Se refracta en la interfaz aire–núcleo según la ley de Snell.  
+- Se calcula el **ángulo crítico** que permite la **reflexión interna total**:  
+
+sin(θc) = n2 / n1
+
+Gracias a esto, la señal óptica se transmite a lo largo de grandes distancias sin escapar del núcleo.  
+
+---
+
+## C) Relación entre Conexiones Inalámbricas y Fibra Óptica
+
+1. **Ambas usan ondas electromagnéticas**  
+   - Fibra óptica: transmite luz (espectro óptico).  
+   - Conexiones inalámbricas: transmiten radiofrecuencia (espectro de radio/microondas).  
+   - Diferencia: usan distintas bandas del espectro.  
+
+2. **Necesitan un medio de propagación**  
+   - Fibra óptica: la luz viaja confinada en el núcleo por reflexión interna total.  
+   - Inalámbricas: la señal viaja en el aire y sufre atenuación, interferencias y dispersión.  
+
+3. **Estándares actuales**  
+   - Hoy en día, ambos se utilizan en conjunto.  
+   - Los **routers domésticos** combinan fibra óptica (reemplazando al cobre) con conexiones inalámbricas a Internet.  
 
 
 

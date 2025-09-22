@@ -25,6 +25,22 @@ Cosigna 3a
 
 Cosigna 3b  
 
+| Protocolo   | Distancia típica (aprox.) | Data rate típico (aprox.) |
+|-------------|----------------------------|----------------------------|
+| **NFC**     | < 0.1 m                   | 106 – 424 kbps             |
+| **Bluetooth** | 1 – 100 m                | 125 kbps – 2 Mbps          |
+| **ZigBee**  | 10 – 100 m                 | 20 – 250 kbps              |
+| **Z-Wave**  | 30 – 100 m                 | 9.6 – 100 kbps             |
+| **Wi-Fi**   | 10 – 100 m                 | 10 Mbps – 1 Gbps           |
+| **NB-IoT**  | 1 – 10 km                  | 20 – 250 kbps              |
+| **GSM (2G)**| 1 – 35 km                  | 9.6 – 200 kbps             |
+| **LTE (4G)**| 1 – 10 km                  | 10 Mbps – 1 Gbps           |
+| **5G**      | 100 m – 10 km              | 100 Mbps – 10 Gbps         |
+| **LoRa**    | 2 – 15 km                  | 0.3 – 50 kbps              |
+| **SigFox**  | 3 – 10 km (hasta 40 km rural) | 100 – 600 bps            |
+
+
+
 
 
 Consigna 3c 

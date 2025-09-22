@@ -40,6 +40,7 @@ Cosigna 3b
 | **SigFox**  | 3 – 10 km (hasta 40 km rural) | 100 – 600 bps            |
 
 
+![Gráfico de Data Rate vs Distancia](data_rate_vs_distancia.png)
 
 
 

@@ -111,3 +111,102 @@ Consigna 3c
 | **Inmunidad a EMI / RFI**              | Baja (susceptible a interferencias) | Muy alta (inmune a EMI/RFI) | Media (afectado por obstáculos y saturación de espectro) | Media-baja (interferencias en 2.4 GHz) | Media (mejor que Wi-Fi, pero depende de la banda) |
 | **Costos de medios/conectores/dispositivos** | Bajo (cables y conectores económicos) | Alto (cables, conectores y equipos más costosos) | Medio (routers/AP de gama media-alta) | Muy bajo (chips y módulos baratos) | Alto (infraestructura y dispositivos avanzados) |
 | **¿Disponible en Packet Tracer?**      | ✅ Sí | ❌ No | ✅ Sí (versiones previas de Wi-Fi, no 802.11be aún) | ❌ No | ❌ No |
+
+----
+## 4. Estado del arte: Internet en aviones
+
+El estado del arte es la sección de un trabajo académico donde se presenta un relevamiento actualizado de lo que ya se ha investigado, desarrollado y publicado sobre un tema en particular. Funciona como un mapa del conocimiento existente, resumiendo tecnologías, avances y limitaciones.
+
+---
+
+### a) Tecnologías que permiten conectarse a Internet en un avión
+
+| Tecnología                           | Cómo funciona / arquitectura básica                                                                                                                                     | Ventajas principales                                                                                                                                                     | Limitaciones                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Satcom con satélites geoestacionarios (GEO)** | Utiliza satélites en órbita geoestacionaria (~35,786 km) que cubren grandes regiones terrestres; el avión envía señal al satélite, éste la reenvía a estación de tierra y luego se entra a Internet. | Cobertura muy amplia; relativamente probado; menos handovers/inconvenientes si no se mueve mucho en latitud/longitud.                                                    | Alta latencia (por la distancia hasta GEO), pérdidas por clima/plumas, coste elevado del enlace, limitaciones de ancho de banda por satélite compartido.                                                                                                                                                                                                                       |
+| **Satcom con satélites de órbita baja (LEO)**   | Conjuntos de satélites más cercanos a la Tierra (varios cientos a pocos miles de km), moviéndose rápidamente, con haces que apuntan a estaciones de seguimiento, etc.   | Menor latencia que GEO; cobertura más global si la constelación es buena; posibilidad de mucha capacidad si hay muchos satélites; mejores potencialidades para streaming o servicios en tiempo real. | Requiere handovers entre satélites, control de enlace (tracking), más estaciones terrestres de soporte; riesgo de interferencias; costes de infraestructura alta; limitaciones de visibilidad (obstrucciones, condiciones atmosféricas).                                                                                                                                      |
+| **Air-to-Ground (A2G o ATG)**        | El avión se conecta directamente a torres terrestres de comunicación (como estaciones de celular modificadas) mediante antenas orientadas hacia abajo, con tecnología LTE/5G u otras adaptadas. El tráfico luego entra al backbone terrestre. | Latencia baja, buen ancho de banda en rutas sobre tierra bien servidas; coste de operación relativamente menor que sólo satélite; buenos para vuelos domésticos, cortos o medianos; menor retardo. | Sólo sirve cuando el avión está sobre tierra donde hay cobertura; no útil sobre océanos, zonas polares, desiertos remotos. Limitaciones de celado de antenas, cambio de células rápido por velocidad del avión, problemas de señal cuando atraviesa muchos territorios. También el espectro y licencias pueden ser un problema.                                                      |
+| **Híbridos / mixtos**                | Combinan más de una tecnología: por ejemplo A2G cuando está disponible, satélite cuando no lo está; o GEO + LEO; también uso de almacenamiento local, caching, etc.      | Permiten optimizar el coste y la experiencia: mantener baja latencia donde es posible, y cobertura continua. Más resilientes.                                            | Mayor complejidad: decisión de cambio (handover), gestión de tráfico diferencial, orquestación de rutas/satélites/enlaces, sincronización, interoperabilidad, coste de múltiples equipos.                                                                                                                                                                                                                              |
+
+**Parámetros técnicos clave a considerar:**  
+- Latencia (delay) y jitters  
+- Ancho de banda disponible / throughput agregado  
+- Ratio subida / bajada (upload vs download)  
+- Pérdida de paquetes (packet loss), estabilidad  
+- Handovers (entre satélites o entre torres A2G) — transición suave  
+- Riesgo de interferencia, condiciones climáticas (lluvia, nubes densas afectan frecuencias altas como Ka, Ka-band)  
+- Peso, consumo, espacio de la antena en el avión  
+- Regulación y licencias espectrales  
+- Costos operativos y de mantenimiento  
+- Seguridad: cifrado, aislamiento del sistema de IFC frente a los sistemas críticos del avión  
+
+---
+
+### b) Publicación reciente (no mayor a un año)
+
+Son dos trabajos, uno más aplicado, otro más de investigación:  
+
+**“Enabling Continuous 5G Connectivity in Aircraft through Low Earth Orbit Satellites”**  
+
+Autores: Raúl Parada, Víctor Monzón Baeza, Carlos Horcajo Fernández de Gamboa, Rocío Serrano Camacho, Carlos Monzó  
+Fecha: abril de 2025  
+
+El trabajo busca resolver el problema de la conectividad continua y de alta velocidad en aviones usando satélites de órbita baja (LEO) en vez de los geoestacionarios (GEO), que tienen más latencia y limitaciones de cobertura.  
+
+**Conclusiones del paper**  
+- Es viable usar satélites LEO para ofrecer conectividad 5G continua en vuelos comerciales.  
+- Los handovers dinámicos y adaptativos son críticos para minimizar pérdidas de señal.  
+- La cobertura interna puede optimizarse con antenas distribuidas y técnicas MIMO/beamforming.  
+- Futuras investigaciones deben explorar constelaciones más grandes y combinaciones de satélites y estaciones terrestres para lograr cobertura global sin interrupciones.  
+
+**Resumiendo**  
+Este paper propone y valida un modelo para que los aviones tengan Internet 5G ininterrumpido usando satélites LEO, mostrando que con la infraestructura adecuada es posible alcanzar casi cobertura total y buena calidad de señal durante todo el vuelo.  
+
+🔗 [arXiv:2504.07262](https://arxiv.org/abs/2504.07262)  
+
+---
+
+**“Satellite Connectivity Prediction for Fast-Moving Platforms”**  
+
+Autores: Chao Yan, Babak Mafakheri  
+Fecha: julio de 2025  
+
+En este paper se hace uso de técnicas de aprendizaje automático para predecir calidad de conectividad satelital para plataformas móviles rápidas (aviones, trenes, vehículos). Permite anticipar cambios de calidad (por ejemplo cuando un satélite deja de tener óptima visibilidad) y hacer switching proactivo entre satélites o haces para optimizar la experiencia del usuario.  
+
+Estas publicaciones pueden servir como punto de partida para ver lo que se está investigando ahora (LEO, handover, predictions, optimización, etc.).  
+
+🔗 [arXiv:2508.00877](https://arxiv.org/abs/2508.00877)  
+
+---
+
+### c) División del tráfico entre contenido a bordo (IFE) e Internet, comparativas, cómo se podría simular
+
+Algunas ideas y consideraciones:  
+
+- **Contenido a bordo (IFE – In-Flight Entertainment):** normalmente alojado en servidores locales instalados en el avión, ya sea en fuselaje o en bodega; el contenido (películas, música, juegos, mapas, etc.) se entrega al pasajero mediante una red Wi-Fi interna (in-cabin Wi-Fi), no con acceso saliente a Internet. Este tráfico no consume el enlace satelital ni A2G hacia tierra; es local, lo que permite ofrecerlo gratis o como parte del servicio sin coste de enlace externo.  
+
+- **Tráfico hacia Internet (IFC – In-Flight Connectivity):** correo electrónico, navegación web, streaming si está permitido, etc. Este tráfico atraviesa por los enlaces satélite / A2G / híbrido, y en general es el que se cobra o se limita, ya que implica coste con la infraestructura de conexión hacia tierra, licencias, satélites, etc.  
+
+La división del tráfico es:  
+A. El sistema de gestión de red a bordo debe distinguir entre tráfico hacia Internet vs tráfico local, de modo de priorizar, limitar, asignar QoS distinto, etc.  
+B. Posible uso de políticas: por ejemplo, dar prioridad a tráfico ligero (correo, mensajería) en los enlaces satelitales, y tal vez limitar el ancho para streaming si muchos usuarios lo usan al mismo tiempo.  
+
+---
+
+#### C. Comparativa
+
+| Aspecto                | Ver película (IFE)                                                                                     | Enviar/recibir correo (IFC)                                                               |
+|-------------------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| **Uso de banda**        | Alto si es HD/4K, streaming o descarga; pero no consume enlaces externos al ser contenido local.       | Mucho menor; generalmente pocos KBs (texto e imágenes).                                   |
+| **Latencia perceptible**| Muy baja, depende solo de la red Wi-Fi interna.                                                        | Puede ser mayor, depende del enlace satélite/A2G (GEO: alto retardo, LEO/A2G: menor).     |
+| **Fiabilidad/calidad**  | Alta si la infraestructura interna está bien dimensionada; no depende de condiciones externas.         | Depende de calidad del enlace, clima, saturación, interferencias, etc.                    |
+
+---
+
+#### Como se divide el tráfico
+
+- El sistema de gestión de red a bordo debe distinguir entre tráfico hacia Internet vs tráfico local, de modo de priorizar, limitar, asignar QoS distinto, etc.  
+- Posible uso de políticas: por ejemplo, dar prioridad a tráfico ligero (correo, mensajería) en los enlaces satelitales, y tal vez limitar el ancho para streaming si muchos usuarios lo usan al mismo tiempo.  
+
+
+

@@ -1,12 +1,90 @@
 ## TRABAJO PRÁCTICO N° 3 ~ Capas de Acceso en Redes Locales, Protocolos y Fundamentos.
+## Consigna 1
+### A) Investigar los estándares IEEE 802.3 y 802.11, resumir brevemente su historia y campo de aplicación.
 
+***IEEE 802.3 (Ethernet)***
 
+Historia:
 
+- Nació en 1983 como estándar de la IEEE para definir las redes Ethernet.
+
+- Se basó en los trabajos de Xerox, Intel y DEC, quienes habían desarrollado la primera versión de Ethernet en los años 70.
+
+- A lo largo del tiempo fue evolucionando para soportar mayores velocidades (10 Mbps → 100 Mbps “Fast Ethernet” → 1 Gbps “Gigabit Ethernet” → 10, 40, 100 Gbps y más en la actualidad).
+
+- También incorporó mejoras como la transmisión en cobre, fibra óptica y recientemente sobre par trenzado de alta velocidad.
+
+Campo de aplicación:
+
+- Define el funcionamiento de las redes LAN (Local Area Network) por cable.
+
+- Se centra en la capa física (cómo se transmite la señal en el medio) y la subcapa MAC de la capa de enlace de datos (formato de tramas, direccionamiento MAC, control de acceso al medio).
+
+- Es el estándar más utilizado en redes de área local empresariales y hogareñas.
+
+***IEEE 802.11 (Wi-Fi)***
+
+Historia:
+
+- Publicado en 1997 como estándar de redes inalámbricas locales (WLAN).
+
+- La primera versión soportaba velocidades muy bajas (1–2 Mbps en 2.4 GHz).
+
+- Con el tiempo surgieron mejoras: 802.11b (11 Mbps), 802.11a/g (54 Mbps), 802.11n (600 Mbps), 802.11ac (Gbps en 5 GHz) y 802.11ax (Wi-Fi 6) que permite hasta varios Gbps en entornos densos.
+
+- Hoy en día sigue evolucionando, con Wi-Fi 7 (802.11be) ya en desarrollo.
+
+Campo de aplicación:
+
+- Define las redes inalámbricas locales (WLAN), que permiten la conexión sin cables entre dispositivos.
+
+- Opera principalmente en las bandas de 2.4 GHz y 5 GHz, y más recientemente en 6 GHz.
+
+- Se usa en hogares, empresas, universidades, espacios públicos y prácticamente cualquier entorno donde se requiera movilidad.
+
+### B) En la Facultad, conectarse a alguna de las siguientes redes abiertas: FCEFyN, UNC-LIBRE, EduRoam. Determinar qué versión del protocolo 802.11 utiliza y mostrar el procedimiento que utilizó para averiguarlo.
+
+![](e606966c-120b-4526-b62d-294a96a756ff.jpeg)
+
+### C) ¿Qué sucede si una red Wi-Fi opera con determinado protocolo y un dispositivo (por ejemplo, una notebook vieja) utiliza una NIC que no soporta dicho protocolo?
+Si una red Wi-Fi opera con un determinado protocolo y un dispositivo posee una (NIC) que no lo soporta, pueden darse dos situaciones:
+
+- Si el punto de acceso es retrocompatible, el dispositivo se conectará utilizando la versión más baja que ambos soporten, aunque con menor velocidad y prestaciones.
+
+- Si el punto de acceso no es retrocompatible, el dispositivo directamente no podrá conectarse a la red.
+### D) 
+### a)¿Qué relación existe entre la versión del protocolo utilizado y la seguridad de la red? 
+
+La versión del protocolo 802.11 utilizada en una red influye también en el tipo de seguridad disponible. A lo largo de la evolución de este estándar, se incorporaron distintos mecanismos de autenticación y cifrado:
+
+- 802.11 original: seguridad nula o muy básica (WEP, fácilmente vulnerable).
+
+- 802.11i (incluido en 802.11g/n/ac): introdujo WPA y WPA2, con cifrado más fuerte (TKIP y AES).
+
+- 802.11ax (Wi-Fi 6): incluye soporte para WPA3, con mejoras en la robustez frente a ataques de diccionario y mayor seguridad en redes abiertas.
+
+### b) Nuevamente conectado a alguna de las redes del punto  determinar qué sistema de seguridad utiliza y qué diferencias tiene con el sistema de seguridad de la versión del protocolo que lo precede.
+
+El tipo de radio de la red FCEyN es 802.11ac pero se puede observar que en los campos de seguridad aparece:
+- Autenticación: Abierta
+- Cifrado: Ninguna
+
+Se observa que aunque  soporta estándares de seguridad avanzados como WPA2, la red está configurada como red abierta, sin protección en la transmisión de datos.
+
+### E) Considerando los protocolos más recientes y su denominación en el argot de la industria (WiFi 5/6/7), investigar y completar el siguiente cuadro:
+| Característica           | **Wi-Fi 5**   | **Wi-Fi 6**                                | **Wi-Fi 7**                              |
+| ------------------------ | ------------- | ------------------------------------------ | ---------------------------------------- |
+| **Versión IEEE**         | 802.11ac      | 802.11ax                                   | 802.11be                                 |
+| **Tasa de datos máxima** | ~3,5 Gbps     | ~9,6 Gbps                                  | >30 Gbps                                 |
+| **Banda(s)**             | 5 GHz         | 2,4 GHz y 5 GHz (luego 6 GHz con Wi-Fi 6E) | 2,4 GHz, 5 GHz y 6 GHz                   |
+| **Ancho de banda**       | Hasta 160 MHz | Hasta 160 MHz                              | Hasta 320 MHz                            |
+| **Modulación**           | 256-QAM       | 1024-QAM                                   | 4096-QAM                                 |
+| **Sistema de Seguridad** | WPA2          | WPA3                                       | WPA3 (con mejoras futuras en desarrollo) |
 
 
 ## Consigna 2
 
-## A) Fibra Óptica Monomodo (SMF) y Multimodo (MMF)
+### A) Fibra Óptica Monomodo (SMF) y Multimodo (MMF)
 
 Las dos transmisiones que se están ilustrando son de fibra óptica.  
 En el primer caso, se trata de **fibra óptica monomodo (SMF)** y **fibra óptica multimodo (MMF)**.  
@@ -29,7 +107,7 @@ En el primer caso, se trata de **fibra óptica monomodo (SMF)** y **fibra óptic
 
 ---
 
-## B) Relación de la Ley de Snell con la Fibra Óptica
+### B) Relación de la Ley de Snell con la Fibra Óptica
 
 La **ley de Snell** describe cómo la luz cambia de dirección al pasar de un medio a otro con diferente índice de refracción:  
 
@@ -49,7 +127,7 @@ Gracias a esto, la señal óptica se transmite a lo largo de grandes distancias 
 
 ---
 
-## C) Relación entre Conexiones Inalámbricas y Fibra Óptica
+### C) Relación entre Conexiones Inalámbricas y Fibra Óptica
 
 1. **Ambas usan ondas electromagnéticas**  
    - Fibra óptica: transmite luz (espectro óptico).  
@@ -67,7 +145,8 @@ Gracias a esto, la señal óptica se transmite a lo largo de grandes distancias 
 
 
 
-Cosigna 3a 
+## Consigna 3
+### A) Completar el siguiente cuadro, que lista algunos de los protocolos inalámbricos más comunes:
 | Protocolo | ¿Está estandarizado? | Estándar / Última versión relevante |
 |-----------|----------------------|-------------------------------------|
 | **Wi-Fi** | ✅ Sí | IEEE 802.11 (última versión: 802.11ax, conocido como Wi‑Fi 6; en desarrollo Wi‑Fi 7 = 802.11be) |
@@ -82,7 +161,7 @@ Cosigna 3a
 | **SigFox** | ❌ No | Tecnología cerrada, controlada por la empresa Sigfox. No es estándar abierto |
 | **Z‑Wave** | ✅ Sí (desde 2020) | Originalmente propietario, ahora estandarizado por ITU‑T G.9959. Última versión: Z‑Wave Plus v2 (2019) |
 
-Cosigna 3b  
+### B) Sobre los protocolos mencionados, investigar y colocarlos en el siguiente gráfico (de manera aproximada) de acuerdo a sus características de alcance (distancia) y data rate.
 
 | Protocolo   | Distancia típica (aprox.) | Data rate típico (aprox.) |
 |-------------|----------------------------|----------------------------|
@@ -103,7 +182,7 @@ Cosigna 3b
 
 
 
-Consigna 3c 
+### C) De acuerdo a lo investigado y visto en las clases teóricas, completar el siguiente cuadro con las características indicadas para los distintos medios de transmisión:
 | Característica                          | UTP (Par trenzado sin blindaje) | Fibra Óptica | Wi-Fi 802.11be (Wi‑Fi 7) | Bluetooth 5.4 | 5G |
 |----------------------------------------|---------------------------------|--------------|--------------------------|---------------|----|
 | **Ancho de banda**                     | Hasta 1–10 Gbps (Cat 5e/6/6a/7/8) | >100 Gbps (dependiendo del tipo: monomodo/multimodo) | Hasta ~40 Gbps teóricos | Hasta 2 Mbps (BLE), hasta 24 Mbps clásico | Hasta 10 Gbps (dependiendo de banda y despliegue) |
@@ -113,13 +192,13 @@ Consigna 3c
 | **¿Disponible en Packet Tracer?**      | ✅ Sí | ❌ No | ✅ Sí (versiones previas de Wi-Fi, no 802.11be aún) | ❌ No | ❌ No |
 
 ----
-## 4. Estado del arte: Internet en aviones
+## Consgigna 4. Estado del arte: Internet en aviones
 
 El estado del arte es la sección de un trabajo académico donde se presenta un relevamiento actualizado de lo que ya se ha investigado, desarrollado y publicado sobre un tema en particular. Funciona como un mapa del conocimiento existente, resumiendo tecnologías, avances y limitaciones.
 
 ---
 
-### a) Tecnologías que permiten conectarse a Internet en un avión
+### A) Tecnologías que permiten conectarse a Internet en un avión
 
 | Tecnología                           | Cómo funciona / arquitectura básica                                                                                                                                     | Ventajas principales                                                                                                                                                     | Limitaciones                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,7 +221,7 @@ El estado del arte es la sección de un trabajo académico donde se presenta un 
 
 ---
 
-### b) Publicación reciente (no mayor a un año)
+### B) Publicación reciente (no mayor a un año)
 
 Son dos trabajos, uno más aplicado, otro más de investigación:  
 
@@ -179,7 +258,7 @@ Estas publicaciones pueden servir como punto de partida para ver lo que se está
 
 ---
 
-### c) División del tráfico entre contenido a bordo (IFE) e Internet, comparativas, cómo se podría simular
+### C) División del tráfico entre contenido a bordo (IFE) e Internet, comparativas, cómo se podría simular
 
 Algunas ideas y consideraciones:  
 

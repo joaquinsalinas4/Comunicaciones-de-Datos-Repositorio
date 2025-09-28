@@ -44,7 +44,7 @@ Campo de aplicación:
 
 ### B) En la Facultad, conectarse a alguna de las siguientes redes abiertas: FCEFyN, UNC-LIBRE, EduRoam. Determinar qué versión del protocolo 802.11 utiliza y mostrar el procedimiento que utilizó para averiguarlo.
 
-![](e606966c-120b-4526-b62d-294a96a756ff.jpeg)
+![](Determinacion_del_protocolo_Wi-Fi.jpeg)
 
 ### C) ¿Qué sucede si una red Wi-Fi opera con determinado protocolo y un dispositivo (por ejemplo, una notebook vieja) utiliza una NIC que no soporta dicho protocolo?
 Si una red Wi-Fi opera con un determinado protocolo y un dispositivo posee una (NIC) que no lo soporta, pueden darse dos situaciones:

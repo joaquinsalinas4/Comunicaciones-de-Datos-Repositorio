@@ -177,9 +177,35 @@ Ahora se intenta hacer un ping desde sw1 hacia sw2
 **ping sw1 -> sw2 (fallido):**
 
 ![ping sw1 -> sw2:](consigna2/ping%20sw1-sw2.png)
+
 Esto vuelve a fallar, ya que las ip de ambos switches 192.168.1.11 y 192.168.1.11 se encuentran en la VLAN 99, mientras que el enlace F0/1 entre ellos sigue estando en la VLAN 1.
 Al parecer, el tráfico de la VLAN 99 tampoco puede cruzar ese enlace
 
+Si se configuran en ambos switches el puerto F0/1 como un enlace troncal (trunk), se puede volver a habilitar la comunicacion entre ambos switches y PCs.
+Un "trunk" es un puerto especial que tiene permiso para transportar tráfico de múltiples VLANs al mismo tiempo (la VLAN 10 para los PCs y la VLAN 99 para la gestión de los switches).
+
+En sw1, se introducen los siguientes comandos:
+
+![](consigna2/trunk-sw1.jpeg)
+
+Luego, en sw2:
+
+![](consigna2/trunk-sw2.png)
+
+Ahora, se vuelve a intentar el ping pcA -> pcB y sw1 -> sw2
+
+**ping pcA -> pcB (exitoso):**
+
+![](consigna2/ping%20pcB%20exito.jpeg)
+
+**ping sw1 -> sw2 (exitoso):**
+
+![](consigna2/ping%20sw2%20exito.jpeg)
+
+Como podemos observar, el enlace troncal (trunk) es que es el componente esencial que permite extender las VLANs a través de múltiples switches.
+A diferencia de un puerto de acceso, que solo puede pertenecer a una única VLAN, el puerto troncal actúa como una autopista que transporta tráfico de múltiples VLANs al mismo tiempo.
+Esto lo logra mediante un sistema de "etiquetado" (conocido como 802.1Q), que marca cada paquete de datos para que el siguiente switch sepa a qué VLAN (sea la 10, la 99, etc.) pertenece.
+De esta forma, los dispositivos en la misma VLAN pueden comunicarse entre sí, aunque estén en switches físicamente separados, como si estuvieran todos conectados al mismo equipo.
 
 ## Consigna 3
 
@@ -250,7 +276,8 @@ Resultado: Todos los ping son exitosos.
 ### Conclusion
 
 Las pruebas de conectividad (ping y HTTP) permitieron validar el 100% de la configuración y el cumplimiento de todos los requisitos de la práctica.
-Ademas, se pudo simular satisfactoriamente una red LAN, cumpliendo con los requisitos de seguridad, y con un servicio para cada usuario de la red (Turista, Business y Admin)
+Ademas, se pudo simular satisfactoriamente una red LAN, cumpliendo con los requisitos de seguridad gracias a ACL, 
+y con un servicio para cada usuario de la red (Turista, Business y Admin), implementando segmentacion de la red con VLAN
 
 - El Enrutamiento Inter-VLAN funciona
 Prueba: Los pings y el acceso HTTP exitosos desde PC Turista (VLAN 10) y PC Business (VLAN 20) hacia el Servidor (VLAN 99).

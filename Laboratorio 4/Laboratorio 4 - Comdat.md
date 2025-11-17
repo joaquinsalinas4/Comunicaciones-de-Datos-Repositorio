@@ -123,7 +123,6 @@ Lo mismo para sw2.
 ### i)Verificación de VLANs
 
 Ahora, con el comando show vlan brief, podemos visualizar que la vlan utilizada por defecto es la VLAN 1, ya que dice "default"
-
 ![](consigna2/output%20del%20i.jpeg)
 
 ### j) Se asigna PC-A a VLAN 10 (en SW-1)
@@ -178,6 +177,70 @@ Ahora se intenta hacer un ping desde sw1 hacia sw2
 **ping sw1 -> sw2 (fallido):**
 
 ![ping sw1 -> sw2:](consigna2/ping%20sw1-sw2.png)
-
 Esto vuelve a fallar, ya que las ip de ambos switches 192.168.1.11 y 192.168.1.11 se encuentran en la VLAN 99, mientras que el enlace F0/1 entre ellos sigue estando en la VLAN 1.
 Al parecer, el tráfico de la VLAN 99 tampoco puede cruzar ese enlace
+
+
+## Consigna 3
+
+Topologia logica para la consigna
+
+![](consigna2/topologia-logica-punto3.png)
+
+Con la siguiente table de enrutamiento:
+
+![](consigna2/tabla_enrutamiento_p3.png)
+
+### Configuracion de router:
+
+![](consigna2/config-router-1.jpeg)
+
+![](consigna2/config-router-2.jpeg)
+
+### Configuracion de router:
+
+![](consigna2/config-switch.jpeg)
+
+Se llevan a cabo las siguientes pruebas
+
+![](consigna2/pruebas.png)
+
+### A) Ping al servidor de entretenimiento. desde PC Turista hacia 10.10.99.10
+
+![](consigna2/prueba-turista-entretenimiento.jpeg)
+
+Resultado: Los paquetes llegan exitosamente 
+
+### B) Acceso HTTP a servidor local: Desde PC Turista hacia http://10.10.99.10 mediante servidor web
+
+![](consigna2/prueba-turista-servidor-web.jpeg)
+
+Resultado: La pagina web es visualizada correctamente
+
+### C) Ping a Internet: Desde PC Turista hacia 8.8.8.8 (google) 
+
+![](consigna2/prueba-turista-internet.jpeg)
+
+Resultado: Los paquetes no son recibidos.
+
+### D) Acceso HTTP a servidor local: Desde PC Business hacia http://10.10.99.10 mediante servidor web
+
+![](consigna2/prueba-business-web.jpeg)
+
+Resultado: La pagina web se carga correctamente
+
+### E) Ping a Internet: Desde PC Business hacia 8.8.8.8 (google)
+
+![](consigna2/prueba-business-google.jpeg)
+
+Resultado: Los paquetes llegan correctamente
+
+### F) Ping entre Admin y todos
+
+Ping a servidor: ip 10.10.99.10, ping a PC Turista (VLAN 10): ip 10.10.10.11, ping a PC Business (VLAN 20): ping 10.10.20.11
+
+![](consigna2/prueba-admin-todos.jpeg)
+
+Ping a internet: ip 8.8.8.8
+
+![](consigna2/prueba-admin-internet.jpeg)

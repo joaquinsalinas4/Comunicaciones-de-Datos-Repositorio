@@ -60,7 +60,7 @@ El IEEE 802.1Q es el estándar que define cómo se identifican y transportan mú
 El tagging es el proceso mediante el cual un switch agrega una etiqueta (tag) 802.1Q a una trama Ethernet para indicar a qué VLAN pertenece.
 Este tag se inserta en la trama cuando debe viajar por un enlace configurado como trunk, donde circula tráfico de múltiples VLAN al mismo tiempo.
 
-### Consigna 2
+## Consigna 2
 
 Se implementa la siguiente topología en Packet Tracer, conectando los PCs a los switches mediante cables de consola para la configuración inicial y cables de cobre directos para la conexión de red (ej. PC-A a F0/6, PC-B a F0/18, y SW-1 F0/1 a SW-2 F0/1).
 
@@ -174,7 +174,7 @@ Podemos apreciar que ambos ping fallan. Por lo que pudimos investigar, si bien l
 
 Ahora se intenta hacer un ping desde sw1 hacia sw2
 
-**ping sw1 -> sw2:**
+**ping sw1 -> sw2 (fallido):**
 
 ![ping sw1 -> sw2:](consigna2/ping%20sw1-sw2.png)
 Esto vuelve a fallar, ya que las ip de ambos switches 192.168.1.11 y 192.168.1.11 se encuentran en la VLAN 99, mientras que el enlace F0/1 entre ellos sigue estando en la VLAN 1.

@@ -123,6 +123,7 @@ Lo mismo para sw2.
 ### i)Verificación de VLANs
 
 Ahora, con el comando show vlan brief, podemos visualizar que la vlan utilizada por defecto es la VLAN 1, ya que dice "default"
+
 ![](consigna2/output%20del%20i.jpeg)
 
 ### j) Se asigna PC-A a VLAN 10 (en SW-1)
@@ -177,5 +178,6 @@ Ahora se intenta hacer un ping desde sw1 hacia sw2
 **ping sw1 -> sw2 (fallido):**
 
 ![ping sw1 -> sw2:](consigna2/ping%20sw1-sw2.png)
+
 Esto vuelve a fallar, ya que las ip de ambos switches 192.168.1.11 y 192.168.1.11 se encuentran en la VLAN 99, mientras que el enlace F0/1 entre ellos sigue estando en la VLAN 1.
 Al parecer, el tráfico de la VLAN 99 tampoco puede cruzar ese enlace

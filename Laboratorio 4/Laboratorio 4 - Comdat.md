@@ -85,17 +85,18 @@ Ademas, en la misma imagen, y para cada switch, se habilita el servicio password
 
 ### d) Ahora se configuran las redes VLAN 1 para cada switch, segun las ip y mascaras de subred proporcionadas:
 
-switch 1
-![](consigna2/D%20sw1.jpeg)
 
-switch 2
-![](consigna2/D%20sw2.jpeg)
+![switch 1](consigna2/D%20sw1.jpeg)
+
+
+![switch 2](consigna2/D%20sw2.jpeg)
 
 ### e) Ahora, se desconectan todas las interfaces que no estan siendo utilizadas. 
 Para el caso del switch 1, los puertos que deben apagarse con shutdown son: F0/2 al F0/5, F0/7 al F0/24, y los puertos Gigabit G0/1 al G0/2.
 Para switch 2, estos puertos son: F0/2 al F0/17, F0/19 al F0/24, y los puertos Gigabit G0/1 al G0/2.
 
 En el caso de switch 2:
+
 ![](consigna2/E%20sw2.jpeg)
 
 ![](consigna2/E%20sw2%20p2.jpeg)
@@ -105,11 +106,9 @@ sw1# copy running-config startup-config
 
 ### g) Ahora, se testea la conexion entre ambas PCs. Para eso, se utiliza el comando ping seguido de la direccion ip de la otra PC.
 
-**ping pcA -> pcB:**
-![](consigna2/g%20pcA.jpeg)
+![ping pcA -> pcB:](consigna2/g%20pcA.jpeg)
 
-**ping pcB -> pcA:**
-![](consigna2/g%20pcB.jpeg)
+![ping pcB -> pcA](consigna2/g%20pcB.jpeg)
 
 ### h) Ahora, se crean VLANs en ambos switches sw1 y sw2
 
@@ -122,7 +121,7 @@ Lo mismo para sw2.
 Ahora, con el comando show vlan brief, podemos visualizar que la vlan utilizada por defecto es la VLAN 1, ya que dice "default"
 ![](consigna2/output%20del%20i.jpeg)
 
-### j) Asignar PC-A a VLAN 10 (en SW-1)
+### j) Se asigna PC-A a VLAN 10 (en SW-1)
 
 ![](consigna2/jota.jpeg)
 
@@ -157,11 +156,9 @@ Ahora se procede a asignar la PC-B a la VLAN Laboratorio en el sw2.
 
 Procedemos a utilizar pings entre pcA a pcB y viceversa. 
 
-**ping pcA -> pcB:**
-![](consigna2/pcA%20fallido.jpeg)
+![ping pcA -> pcB:](consigna2/pcA%20fallido.jpeg)
 
-**ping pcB -> pcA:**
-![](consigna2/pcB%20fallido.jpeg)
+![ping pcB -> pcA:](consigna2/pcB%20fallido.jpeg)
 
 Podemos apreciar que ambos ping fallan. Por lo que pudimos investigar, si bien los PCs (en los extremos) están en la VLAN 10, el enlace que conecta los dos switches (en el medio) sigue estando en la VLAN 1. El tráfico de la VLAN 10 (de PC-A) llega al SW-1, pero el SW-1 no puede enviarlo por el puerto F0/1, ya que ese puerto solo tiene permiso para transportar tráfico de la VLAN 1. El paquete se descarta y nunca llega al SW-2. 
 

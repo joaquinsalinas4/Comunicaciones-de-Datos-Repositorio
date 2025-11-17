@@ -60,7 +60,7 @@ El IEEE 802.1Q es el estándar que define cómo se identifican y transportan mú
 El tagging es el proceso mediante el cual un switch agrega una etiqueta (tag) 802.1Q a una trama Ethernet para indicar a qué VLAN pertenece.
 Este tag se inserta en la trama cuando debe viajar por un enlace configurado como trunk, donde circula tráfico de múltiples VLAN al mismo tiempo.
 
-### Consigna 3
+### Consigna 2
 
 Se implementa la siguiente topología en Packet Tracer, conectando los PCs a los switches mediante cables de consola para la configuración inicial y cables de cobre directos para la conexión de red (ej. PC-A a F0/6, PC-B a F0/18, y SW-1 F0/1 a SW-2 F0/1).
 
@@ -106,7 +106,11 @@ sw1# copy running-config startup-config
 
 ### g) Ahora, se testea la conexion entre ambas PCs. Para eso, se utiliza el comando ping seguido de la direccion ip de la otra PC.
 
+**ping pcA -> pcB:**
+
 ![ping pcA -> pcB:](consigna2/g%20pcA.jpeg)
+
+**ping pcB -> pcA:**
 
 ![ping pcB -> pcA](consigna2/g%20pcB.jpeg)
 
@@ -134,6 +138,7 @@ Ahora, con el comando show vlan brief, podemos visualizar que la vlan utilizada 
 Se verifica la nueva asignación de puertos y el estado de las interfaces.
 
 **Salida de `show vlan brief`:**
+
 ![](consigna2/l%201.1.jpeg)
 
 Se puede observar el puerto F0/6 ahora está asignado a la VLAN 10 (Laboratorio). Todos los demás puertos (excepto F0/1) seguirán en la VLAN 1.
@@ -141,6 +146,7 @@ Esto significa que PC-A está ahora lógicamente separado del resto de los puert
 
 
 **Salida de `show ip interface brief`:**
+
 ![](consigna2/l%201.2.jpeg)
 
 Se puede apreciar que ahora vlan1 aparece como "unassigned", no tiene ip, mientras que ahora vlan99 aparece en estado up y con su ip correspondiente asignada. 
@@ -156,7 +162,11 @@ Ahora se procede a asignar la PC-B a la VLAN Laboratorio en el sw2.
 
 Procedemos a utilizar pings entre pcA a pcB y viceversa. 
 
+**ping pcA -> pcB (fallido):**
+
 ![ping pcA -> pcB:](consigna2/pcA%20fallido.jpeg)
+
+**ping pcA -> pcB (fallido):**
 
 ![ping pcB -> pcA:](consigna2/pcB%20fallido.jpeg)
 
@@ -165,6 +175,7 @@ Podemos apreciar que ambos ping fallan. Por lo que pudimos investigar, si bien l
 Ahora se intenta hacer un ping desde sw1 hacia sw2
 
 **ping sw1 -> sw2:**
-![](consigna2/ping%20sw1-sw2.png)
+
+![ping sw1 -> sw2:](consigna2/ping%20sw1-sw2.png)
 Esto vuelve a fallar, ya que las ip de ambos switches 192.168.1.11 y 192.168.1.11 se encuentran en la VLAN 99, mientras que el enlace F0/1 entre ellos sigue estando en la VLAN 1.
 Al parecer, el tráfico de la VLAN 99 tampoco puede cruzar ese enlace

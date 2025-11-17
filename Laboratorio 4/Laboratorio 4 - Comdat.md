@@ -244,3 +244,26 @@ Ping a servidor: ip 10.10.99.10, ping a PC Turista (VLAN 10): ip 10.10.10.11, pi
 Ping a internet: ip 8.8.8.8
 
 ![](consigna2/prueba-admin-internet.jpeg)
+
+Resultado: Todos los ping son exitosos.
+
+### Conclusion
+
+Las pruebas de conectividad (ping y HTTP) permitieron validar el 100% de la configuración y el cumplimiento de todos los requisitos de la práctica.
+Ademas, se pudo simular satisfactoriamente una red LAN, cumpliendo con los requisitos de seguridad, y con un servicio para cada usuario de la red (Turista, Business y Admin)
+
+- El Enrutamiento Inter-VLAN funciona
+Prueba: Los pings y el acceso HTTP exitosos desde PC Turista (VLAN 10) y PC Business (VLAN 20) hacia el Servidor (VLAN 99).
+Esto demuestra que la configuración de "Router-on-a-Stick" es correcta. El Router Aircraft está recibiendo tráfico etiquetado desde el enlace troncal (trunk) del switch y enrutando exitosamente los paquetes entre las diferentes VLANs (Turista, Business y Admin) a través de sus subinterfaces virtuales.
+
+- La ACL (Lista de Control de Acceso) de Turista es exitosa
+Prueba: El ping desde PC Turista (VLAN 10) hacia Internet (8.8.8.8) falló.
+Este fallo era el resultado esperado. Confirma que la ACL 100 , que deniega el tráfico IP desde la red Turista hacia cualquier destino, está aplicada y funcionando correctamente en la subinterfaz FastEthernet0/0.10. Esto cumple el requisito de "Solo servidor".
+
+- El NAT (Traducción de Direcciones de Red) de Business funciona
+Prueba: El ping desde PC Business (VLAN 20) hacia Internet (8.8.8.8) fue exitoso.
+Esto demuestra que la configuración de NAT está funcionando. El router está traduciendo la dirección IP privada de la VLAN 20 (ej. 10.10.20.11) a su dirección IP pública (200.0.0.1), permitiéndole salir a Internet y recibir respuestas. Esto cumple el requisito de "Servidor + Internet".
+
+- La VLAN Admin tiene "Acceso Total" y requiere Ruteo Estático
+Prueba: El PC Admin (VLAN 99) pudo hacer ping exitosamente a "Todos": el Servidor (VLAN 99), PC Turista (VLAN 10), PC Business (VLAN 20) e Internet (8.8.8.8).
+Esto confirma el requisito de "Acceso total". La prueba a Internet también demostró un concepto clave: para que una red privada (como la 10.10.99.0) acceda a Internet sin usar NAT, es necesario que el router del ISP tenga una ruta estática de regreso, indicándole cómo encontrar esa red privada

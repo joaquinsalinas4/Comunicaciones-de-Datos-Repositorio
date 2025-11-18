@@ -108,3 +108,20 @@ Como resultado, se muestran las salidas de ambos programas, contenidos en dos te
 
 
 ### b) Crear un tópico general lan/broadcast/#. Configurar al menos dos clientes para suscribirse a lan/broadcast/#. Desde un cliente “central”, publicar mensajes en lan/broadcast/all. Capturar y documentar resultados. Con esto simularemos broadcasting en esta pequeña LAN.
+
+Siguiendo la consigna, ahora se crean 3 clases .py para simular dos clientes suscribers y un publisher central, el cual envia un mensaje hacia todos los suscribers que escuchan en broadcast, ya que utilizan el comodin "#" para recibir todo lo que es publicado en lan/broadcast/. Mientras tanto, el publisher, simulando un broadcast en una red LAN chica, publica mensajes en lan/broadcast/all.
+
+Configuracion de los suscribers: Ambos suscribers deben configurar su topico como "lan/broadcast/#"
+
+
+![](consigna4/suscriber-b.jpeg)
+
+Configuracion del cliente central: El cliente central debe settear su topico como "lan/broadcast/all"
+
+![](consigna4/cliente-central-b.jpeg)
+
+
+En las imagenes se pueden apreciar, en las dos terminales de la izquierda, los dos clientes. Mientras que en la terminal derecha se muestra el cliente central, el cual publica en broadcast hacia todos los clientes.
+
+![](consigna4/consigna-4b.jpeg)
+

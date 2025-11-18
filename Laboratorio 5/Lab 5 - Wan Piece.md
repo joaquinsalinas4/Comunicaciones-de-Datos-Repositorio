@@ -125,3 +125,45 @@ En las imagenes se pueden apreciar, en las dos terminales de la izquierda, los d
 
 ![](consigna4/consigna-4b.jpeg)
 
+## Consigna 5
+
+..
+
+## Consigna 5. Preguntas
+
+### a) ¿Sobre qué protocolos de capa de transporte están trabajando en esta actividad?
+
+En este trabajo, se estuvo trabajando sobre el protocolo TCP de la capa de transporte. MQTT se diseñó para ejecutar este protocolo, debido a que se necesita una conexión ordenada, sin perdidas, y orientada a la conexión. Estas son las características principales que posee TCP frente a UDP. En el caso del programa en Python, cuando definimos el puerto 8883, estamos usando TCP seguro (con TLS/SSL). Si usáramos el puerto 1883 (estándar) seria TCP plano. En ambos casos, el protocolo de la capa de transporte es TCP.
+
+### b) ¿Qué pueden decir sobre la garantía de Integridad, Confidencialidad y Disponibilidad en esta arquitectura?
+
+Cuando hablamos de la garantía de Integridad, Confidencialidad y Disponibilidad, estamos hablando de la triada "CIA" de seguridad informática.
+
+- Confidencialidad: Al utilizar el puerto 8883 y el comando client.tls_set(), se habilita la encriptación TLS/SSL. Esto significa que los datos viajan cifrados entre los sensores (publishers) y el Broker. Este desencripta el mensaje, para saber el tópico hacia donde debe enviar el mensaje, lo vuelve a cifrar, y lo envía hacia los suscribers del tópico. Si alguien captura el paquete en el camino (sniffing), no va a poder leer el contenido (el archivo JSON).
+Por lo tanto, se puede afirmar que se puede garantizar confidencialidad.
+
+- Integridad: Debido a que se utiliza el protocolo TCP, se garantiza por defecto que los paquetes lleguen ordenados y sin errores (checksums). Además, TLS añade mecanismos de hash para asegurar que el mensaje no fue modificado en el tránsito. Por ende, la integridad es lograda.
+
+- Disponibilidad: Este es el punto débil. Al depender de un servicio en la nube gratuito como HiveMQ Cloud, y de mi conexión a internet, la disponibilidad no esta garantizada al 100%. Si por ejemplo, se caen los servidores de HiveMQ (AWS), mi sistema de sensores dejará de funcionar.
+
+### c) ¿Qué rol juegan los niveles de QoS en la fiabilidad de los mensajes?
+
+Los niveles de QoS (calidad de servicio) determinan la garantía de la entrega del mensaje entre el cliente y el Broker. Juegan un rol fundamental para balancear la fiabilidad contra el consumo de recursos. En MQTT existen tres niveles:
+
+- QoS 0 (At most once): "Disparar y olvidar". Es rápido pero si el mensaje se pierde, no se reenvía.
+
+- QoS 1 (At least once): Se garantiza que el mensaje llega, pero podría llegar duplicado. Requiere confirmación (ACK).
+
+- QoS 2 (Exactly once): Se garantiza que llega exactamente una vez. Es el más seguro pero el más lento (mayor overhead).
+
+Por lo tanto, se puede afirmar que los QoS permiten balancear entre velocidad/bajo consumo (QoS 0) y fiabilidad crítica (QoS 2).
+
+### d) ¿Qué ventajas ofrece el modelo pub/sub frente al modelo cliente-servidor?
+
+La principal ventaja que ofrece el modelo pub/sub frente al modelo cliente-servidor es el desacoplamiento, tanto espacial como temporal.
+
+- Espacial: Ni el publisher (sensor) ni el suscriber (App) necesitan conocer la IP del otro, solo necesitan conocer al Broker. 
+
+- Temporal: No necesitan estar configurados al mismo tiempo (si se configura la persistencia).
+
+- Escalabilidad: Es mucho mas fácil agregar 20 nuevos sensores y que se sumen 50 nuevos suscriptores sin tocar la configuración de los dispositivos existentes. En un modelo cliente-servidor tradicional (petición-respuesta), el servidor podría saturarse atendiendo a cada cliente individualmente.

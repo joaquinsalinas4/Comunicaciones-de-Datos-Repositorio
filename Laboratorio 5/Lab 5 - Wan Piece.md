@@ -57,3 +57,25 @@ Con los siguientes parametros de red (colocados por defecto):
 Finalmente, para la autenticación, se crea el usuario 'luffy', con su respectiva contraseña dentro de la gestión de acceso del cluster:
 
 ![](consigna2/user.jpg)
+
+
+## Consigna 3
+
+### Verificar que el broker funciona, suscribiendote con un cliente
+
+Para llevar a cabo este paso, tenemos que dirigirnos hacia la Web Client, dentro de HiveMQ Cloud.
+
+![](consigna3/apartado.jpeg)
+
+Luego, se procede a conectarse al cluster en la nube con las credenciales que generamos anteriormente. username: luffy, password: WanPiece5
+
+![](consigna3/web-server-conf.jpeg)
+
+Ahora, se realiza la simulacion, tanto del suscriber como el publisher. Dentro de HiveQM Cloud, se tiene integrado un cliente Web, el cual utilizaremos para suscribirnos. Por el otro lado, tenemos una simulacion en Python de un publisher, el cual envia los datos hacia el Broker. El cliente web, al estar escuchando el mismo topico que el publisher, debe recibir los datos enviados desde el publisher de Python.
+El codigo de Python se adjunta en el directorio "tp5_mqtt" con el nombre de "prueba.py"
+
+En el publisher, se configura la conexion hacia el Broker, con los datos de conexion, como la URL del broker, el puerto 8883, las credenciales para el acceso. Luego, se configuran los datos para la recepcion, como el topico, el cual se debe especificar para que los clientes se suscriban a ese tema en especifico. En este caso, se eligio "sensores/prueba" como topico. Por ultimo, el mensaje a enviar por parte del publisher es "Hola, broker! Este es un mensaje de prueba."
+
+**Recepcion del cliente web en el Broker**
+
+![](consigna3/recepcion-broker.jpeg)

@@ -79,3 +79,32 @@ En el publisher, se configura la conexion hacia el Broker, con los datos de cone
 **Recepcion del cliente web en el Broker**
 
 ![](consigna3/recepcion-broker.jpeg)
+
+## Consigna 4
+
+### Una vez que tenemos nuestra arquitectura funcionando:
+
+### a) Simular una comunicación directa entre dos nodos de una red local. Para ello crear dos clientes: Dispositivo A, que publica en lan/deviceA/status, Dispositivo B se suscribe a ese tópico y muestra los mensajes recibidos. Capturar y documentar resultados.
+
+Para realizar la simulacion, se crean ambos nodos publisher y suscriber en python, en los archivos publisher_deviceA.py y suscriber_deviceB.py respectivamente, dentro del directorio "tp5_mqtt". Ambos deben utilizar las credenciales utilizadas en las consignas anteriores (username = luffy, password = WanPiece5), para poder acceder al Broker. 
+El suscriber se suscribe al topico "lan/deviceA/status" y se queda escuchando, esperando mensajes, mientras que el publisher publica en el mismo topico. 
+
+Los datos para la conexion y el topico se muestran a continuacion. Son los mismos para ambos, excepto por el CLIENT_ID, que para el caso del publisher es "Dispositivo-A", mientras que para el suscriber es "Dispositivo-B".
+
+![](consigna4/datos-c4.jpeg)
+
+
+Se muestra a continuacion el bucle del publisher, el cual, cada 3 segundos, publica un mensaje con informacion de status y timestamp cada 3 segundos, hacia el topico correspondiente. Esto se hace con la instruccion "client.publish(TOPICO, msg)"
+
+![](consigna4/publisher-loop.jpeg)
+
+Luego, el bucle para el suscriber, para recibir los mensajes:
+
+![](consigna4/suscriber-loop.jpeg)
+
+Como resultado, se muestran las salidas de ambos programas, contenidos en dos terminales para cada uno:
+
+![](consigna4/prueba-pubsub.jpeg)
+
+
+### b) Crear un tópico general lan/broadcast/#. Configurar al menos dos clientes para suscribirse a lan/broadcast/#. Desde un cliente “central”, publicar mensajes en lan/broadcast/all. Capturar y documentar resultados. Con esto simularemos broadcasting en esta pequeña LAN.

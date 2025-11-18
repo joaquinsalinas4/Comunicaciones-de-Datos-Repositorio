@@ -40,3 +40,20 @@ MQTT (Message Queuing **Telemetry** Transport) es un protocolo de **mensajería*
 
 - Apps de chat: Facebook Messenger lo **usó** durante mucho tiempo.
 
+## Consigna 2
+
+### Instalar/desplegar y ejecutar un broker MQTT.
+
+Para eso, tenemos que ir a la pagina web https://console.hivemq.cloud/. Nos registramos, solicitamos el pack starter, el cual es gratuito, y abrimos nuestro primer Cluster:
+
+Se puede apreciar la URL del host del broker y el puerto de conexión (TLS) asignado.
+
+![](consigna2/cluster-info.jpeg)
+
+Con los siguientes parametros de red (colocados por defecto):
+
+![](consigna2/info.png)
+
+Finalmente, para la autenticación, se crea el usuario 'luffy', con su respectiva contraseña dentro de la gestión de acceso del cluster:
+
+![](consigna2/user.jpg)

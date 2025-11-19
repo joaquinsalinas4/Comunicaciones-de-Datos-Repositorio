@@ -141,6 +141,19 @@ Se procede con la consigna, generando 4 archivos .py nuevos, el gateway.py, que 
 
 ### b) Ahora nuestro cliente “central” (ahora gateway) se suscribirá y recopilará los datos generados por los sensores en archivos locales.
 
+Se decidió optar por archivos CSV para escribir las metricas leídas de los sensores. Utilizando la siguiente funcion en gateway.py, se escribe en el archivo "registro_sensores.csv" las metricas obtenidas de los sensores:
+
+![](consigna5/funcion-csv.jpg)
+
+Se procede a volver a ejecutar el gateway, junto a los otros tres sensores, para que se registren estas metricas en el archivo .csv:
+
+![](consigna5/prueba-5b.jpeg)
+
+En el archivo csv, se pueden observar las ultimas metricas:
+
+![](consigna5/prueba-csv.jpeg)
+
+### c) Opcional: si te animás, investigá como plotear los datos (usando, por ejemplo, Grafana).
 
 ## Consigna 5. Preguntas
 

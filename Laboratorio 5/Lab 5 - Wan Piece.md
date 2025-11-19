@@ -251,6 +251,15 @@ Como resultado, se puede apreciar como en el controlador (terminal de arriba a l
 
 Al publicar los comandos 'START' o 'STOP' en un único tópico común (lan/broadcast/comandos), logramos que todos los sensores reciban la orden al mismo tiempo. Esto permitió sincronizar el inicio y fin de la transmisión de datos de todos los dispositivos simultáneamente, sin necesidad de enviar un mensaje individual a cada sensor. Se aplica broadcast correctamente, ya que se publica en el tópico común, y todos los suscriptores lo reciben.
 
+### e) Capturar un paquete usando un sniffer y realizar un análisis simple de la composición del mismo.
+
+A continuacion, se realiza la captura de un paquete utilizando wireshark en Linux. Para eso, se inicia controlador.py y sensor_temp_sala1.py para realizar la publicacion de mensajes a traves del puerto 8883.
+Pasados unos segundos, y al haber capturado gran cantidad de paquetes, se analiza el siguiente:
+
+![](consigna5/wireshark.jpeg)
+
+Como se puede ver, wireshark no puede leer el contenido del paquete enviado por el puerto 8883. Esto se debe a que HiveQM Cloud utiliza TLS v1.2, lo que garantiza que no se envien los datos crudos por TCP, y en cambio, utilizamos una capa de seguridad (Transport Layer Security) que envuelve todo.
+Lo mas importante es que en la imagen, en Application Data, dice "Encrypted Application Data". Por lo tanto, nadie puede saber que fue enviado. Aca viaja lo que envian los modulos, como "START", o los datos de los sensores, pero Wireshark solo ve valores hexadecimales "basura"
 
 ## Consigna 5. Preguntas
 

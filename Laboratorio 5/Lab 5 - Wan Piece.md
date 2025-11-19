@@ -258,10 +258,10 @@ Pasados unos segundos, y al haber capturado gran cantidad de paquetes, se analiz
 
 ![](consigna5/wireshark.jpeg)
 
-Como se puede ver, wireshark no puede leer el contenido del paquete enviado por el puerto 8883. Esto se debe a que HiveQM Cloud utiliza TLS v1.2, lo que garantiza que no se envien los datos crudos por TCP, y en cambio, utilizamos una capa de seguridad (Transport Layer Security) que envuelve todo.
-Lo mas importante es que en la imagen, en Application Data, dice "Encrypted Application Data". Por lo tanto, nadie puede saber que fue enviado. Aca viaja lo que envian los modulos, como "START", o los datos de los sensores, pero Wireshark solo ve valores hexadecimales "basura"
+Como se puede ver, Wireshark no puede decodificar el contenido del paquete enviado por el puerto 8883. Esto se debe a que HiveMQ Cloud utiliza TLS v1.2, lo que garantiza que no se envien los datos crudos por TCP, y en cambio, utilizamos una capa de seguridad (Transport Layer Security) que envuelve todo.
+Lo mas importante es que en la imagen, en Application Data, dice "Encrypted Application Data". Por lo tanto, se garantiza la confidencialidad: aunque por la red viajen comandos críticos como 'START' o métricas de los sensores, Wireshark solo visualiza una secuencia hexadecimal ilegible, haciendo imposible que un tercero intercepte la información real."
 
-## Consigna 5. Preguntas
+## Consigna 6
 
 ### a) ¿Sobre qué protocolos de capa de transporte están trabajando en esta actividad?
 
@@ -299,3 +299,27 @@ La principal ventaja que ofrece el modelo pub/sub frente al modelo cliente-servi
 - Temporal: No necesitan estar configurados al mismo tiempo (si se configura la persistencia).
 
 - Escalabilidad: Es mucho mas fácil agregar 20 nuevos sensores y que se sumen 50 nuevos suscriptores sin tocar la configuración de los dispositivos existentes. En un modelo cliente-servidor tradicional (petición-respuesta), el servidor podría saturarse atendiendo a cada cliente individualmente.
+
+### e) ¿Qué limitaciones tiene MQTT respecto a una red LAN real?
+
+Aunque MQTT es excelente para IoT, en el contexto de una red de área local (LAN) presenta ciertas desventajas si lo comparamos con otros protocolos de comunicación directa:
+
+- Comunicación no directa (Peer-to-Peer): En una LAN real (Capa 2/3), dos dispositivos pueden comunicarse directamente entre sí (a través de un switch). En MQTT, el tráfico siempre debe ir al Broker y luego volver al destinatario. Esto agrega un salto extra, generando mas latencia y saltos innecesarios si los dispositivos están físicamente al lado.
+
+- Overhead del protocolo: Aunque MQTT es ligero, cada mensaje tiene un encabezado y requiere el proceso de empaquetado/desempaquetado TCP, lo cual es más pesado que un simple frame de Ethernet o un paquete UDP broadcast en una red local pura.
+
+- Dependencia de la Conectividad Externa (En caso de Cloud Broker): En nuestra implementación específica, aunque los sensores y el gateway estaban en la misma red local (LAN), dependíamos 100% de la conexión a Internet. Si se cortaba el cable de fibra óptica de la calle, la LAN interna seguía funcionando, pero la comunicación MQTT moría porque el broker estaba fuera.
+
+- Broadcast Lógico vs. Físico: En el punto 4b del TP, se hizo un "broadcast" lógico usando tópicos (lan/broadcast/#). En una LAN real, un broadcast se envía una sola vez al medio físico; en MQTT, el Broker tiene que copiar el mensaje y enviarlo individualmente a cada suscriptor, consumiendo más ancho de banda linealmente según la cantidad de clientes.
+
+### f) ¿Qué implicaciones tiene depender de un broker central para la comunicación?
+
+La arquitectura de MQTT se basa en una topología de estrella (Star Topology), donde el Broker es el centro del universo. Esto tiene implicaciones críticas:
+
+- Punto Único de Fallo: Es la implicación más grave. Si el proceso del Broker se cae, la máquina donde corre se apaga, o la red hacia el Broker se corta, toda la comunicación se detiene. Nadie puede hablar con nadie, a diferencia de una red mesh donde si un nodo cae, los demás siguen operando.
+
+- Cuello de Botella: Al centralizar el tráfico, el Broker debe procesar todos los mensajes entrantes y salientes. Si la red escala de 3 sensores a 100.000, el Broker podría saturarse por CPU o ancho de banda, volviéndose lento y generando colas de mensajes, mientras que en una red descentralizada (Mesh) la carga se reparte.
+
+- Seguridad Centralizada: El Broker se convierte en el objetivo principal de ataques. Si alguien compromete el Broker, tiene acceso a todos los datos de la red simulada.
+
+- Desacoplamiento: Depender de un centro permite que los clientes (sensores) no necesiten saber la IP ni el estado de los otros clientes. El sensor de temperatura no sabe que existe un script de Python guardando CSVs, solo sabe que debe enviarle datos al Broker. Esto facilita enormemente agregar o quitar dispositivos sin reconfigurar toda la red.

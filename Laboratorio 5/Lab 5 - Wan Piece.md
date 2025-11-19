@@ -71,12 +71,12 @@ Luego, se procede a conectarse al cluster en la nube con las credenciales que ge
 
 ![](consigna3/web-server-conf.jpeg)
 
-Ahora, se realiza la simulacion, tanto del suscriber como el publisher. Dentro de HiveQM Cloud, se tiene integrado un cliente Web, el cual utilizaremos para suscribirnos. Por el otro lado, tenemos una simulacion en Python de un publisher, el cual envia los datos hacia el Broker. El cliente web, al estar escuchando el mismo topico que el publisher, debe recibir los datos enviados desde el publisher de Python.
-El codigo de Python se adjunta en el directorio "tp5_mqtt" con el nombre de "prueba.py"
+Ahora, se realiza la simulacion, tanto del suscriber como el publisher. Dentro de HiveQM Cloud, se tiene integrado un cliente Web, el cual utilizaremos para suscribirnos. Por el otro lado, tenemos una simulacion en Python de un publisher, el cual envía los datos hacia el Broker. El cliente web, al estar escuchando el mismo tópico que el publisher, debe recibir los datos enviados desde el publisher de Python.
+El código de Python se adjunta en el directorio "tp5_mqtt" con el nombre de "prueba.py"
 
-En el publisher, se configura la conexion hacia el Broker, con los datos de conexion, como la URL del broker, el puerto 8883, las credenciales para el acceso. Luego, se configuran los datos para la recepcion, como el topico, el cual se debe especificar para que los clientes se suscriban a ese tema en especifico. En este caso, se eligio "sensores/prueba" como topico. Por ultimo, el mensaje a enviar por parte del publisher es "Hola, broker! Este es un mensaje de prueba."
+En el publisher, se configura la conexión hacia el Broker, con los datos de conexión, como la URL del broker, el puerto 8883, las credenciales para el acceso. Luego, se configuran los datos para la recepcion, como el tópico, el cual se debe especificar para que los clientes se suscriban a ese tema en especifico. En este caso, se eligió "sensores/prueba" como tópico. Por ultimo, el mensaje a enviar por parte del publisher es "Hola, broker! Este es un mensaje de prueba."
 
-**Recepcion del cliente web en el Broker**
+**Recepción del cliente web en el Broker**
 
 ![](consigna3/recepcion-broker.jpeg)
 
@@ -87,14 +87,14 @@ En el publisher, se configura la conexion hacia el Broker, con los datos de cone
 ### a) Simular una comunicación directa entre dos nodos de una red local. Para ello crear dos clientes: Dispositivo A, que publica en lan/deviceA/status, Dispositivo B se suscribe a ese tópico y muestra los mensajes recibidos. Capturar y documentar resultados.
 
 Para realizar la simulacion, se crean ambos nodos publisher y suscriber en python, en los archivos publisher_deviceA.py y suscriber_deviceB.py respectivamente, dentro del directorio "tp5_mqtt". Ambos deben utilizar las credenciales utilizadas en las consignas anteriores (username = luffy, password = WanPiece5), para poder acceder al Broker. 
-El suscriber se suscribe al topico "lan/deviceA/status" y se queda escuchando, esperando mensajes, mientras que el publisher publica en el mismo topico. 
+El suscriber se suscribe al tópico "lan/deviceA/status" y se queda escuchando, esperando mensajes, mientras que el publisher publica en el mismo tópico. 
 
-Los datos para la conexion y el topico se muestran a continuacion. Son los mismos para ambos, excepto por el CLIENT_ID, que para el caso del publisher es "Dispositivo-A", mientras que para el suscriber es "Dispositivo-B".
+Los datos para la conexión y el tópico se muestran a continuacion. Son los mismos para ambos, excepto por el CLIENT_ID, que para el caso del publisher es "Dispositivo-A", mientras que para el suscriber es "Dispositivo-B".
 
 ![](consigna4/datos-c4.jpeg)
 
 
-Se muestra a continuacion el bucle del publisher, el cual, cada 3 segundos, publica un mensaje con informacion de status y timestamp cada 3 segundos, hacia el topico correspondiente. Esto se hace con la instruccion "client.publish(TOPICO, msg)"
+Se muestra a continuacion el bucle del publisher, el cual, cada 3 segundos, publica un mensaje con informacion de status y timestamp cada 3 segundos, hacia el tópico correspondiente. Esto se hace con la instruccion "client.publish(TOPICO, msg)"
 
 ![](consigna4/publisher-loop.jpeg)
 
@@ -111,12 +111,12 @@ Como resultado, se muestran las salidas de ambos programas, contenidos en dos te
 
 Siguiendo la consigna, ahora se crean 3 clases .py para simular dos clientes suscribers y un publisher central, el cual envia un mensaje hacia todos los suscribers que escuchan en broadcast, ya que utilizan el comodin "#" para recibir todo lo que es publicado en lan/broadcast/. Mientras tanto, el publisher, simulando un broadcast en una red LAN chica, publica mensajes en lan/broadcast/all.
 
-Configuracion de los suscribers: Ambos suscribers deben configurar su topico como "lan/broadcast/#"
+Configuracion de los suscribers: Ambos suscribers deben configurar su tópico como "lan/broadcast/#"
 
 
 ![](consigna4/suscriber-b.jpeg)
 
-Configuracion del cliente central: El cliente central debe settear su topico como "lan/broadcast/all"
+Configuracion del cliente central: El cliente central debe settear su tópico como "lan/broadcast/all"
 
 ![](consigna4/cliente-central-b.jpeg)
 
@@ -154,6 +154,28 @@ En el archivo csv, se pueden observar las ultimas metricas:
 ![](consigna5/prueba-csv.jpeg)
 
 ### c) Opcional: si te animás, investigá como plotear los datos (usando, por ejemplo, Grafana).
+
+Siguiendo con la consigna, decidimos plotear todos los datos recibidos de las tres simulaciones de sensores.
+Primero, se abre un servidor web con Python en el puerto 8000, con el siguiente comando:
+
+![](consigna5/server-grafana.jpeg)
+
+Este se ejecuta en la misma carpeta en la que es encuentra el archivo .csv con las metricas.
+Luego, se procede a abrir Grafana, la herramienta para la visualizacion. Para ello, ingresamos a través de un navegador web a la dirección http://localhost:3000. Este es el puerto predeterminado donde el servicio de Grafana expone su interfaz gráfica de usuario.
+
+Se realiza la siguiente configuracion en Grafana, para poder recibir los datos, especificando el formato csv y la URL. Esta URL de origen en Infinity se usa para apuntar al socket local (127.0.0.1:8000) donde el servicio de Python expone el archivo CSV."
+
+![](consigna5/grafana-config.jpeg)
+
+Los datos llegan correctamente a Grafana, se muestran en la tabla a continuacion:
+
+![](consigna5/grafana-tabla.jpeg)
+
+Luego de configurar la conexión gracias a Unity, y configurar los gráficos correspondientes para mostrar los datos, se muestra el gráfico a continuacion:
+
+![](consigna5/server-grafana.jpeg)
+
+Como se puede apreciar en la leyenda, se indican los colores que corresponde a cada grafico, que se corresponde a cada sensor (temp_sala1, temp_sala2, hum_sala1)
 
 ## Consigna 5. Preguntas
 

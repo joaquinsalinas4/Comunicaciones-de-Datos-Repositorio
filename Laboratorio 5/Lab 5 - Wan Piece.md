@@ -173,9 +173,82 @@ Los datos llegan correctamente a Grafana, se muestran en la tabla a continuacion
 
 Luego de configurar la conexión gracias a Unity, y configurar los gráficos correspondientes para mostrar los datos, se muestra el gráfico a continuacion:
 
-![](consigna5/server-grafana.jpeg)
+![](consigna5/grafana.jpeg.jpeg)
 
 Como se puede apreciar en la leyenda, se indican los colores que corresponde a cada grafico, que se corresponde a cada sensor (temp_sala1, temp_sala2, hum_sala1)
+
+### d) Mediante broadcasting deberemos poder enviar al menos dos mensajes de comando a los clientes (ahora sensores): comenzar la simulación de datos y apagarse.
+
+Para aplicar el broadcasting, se procede a crear otra clase controlador.py, adjuntada en el proyecto, el cual se encargara de publicar en el tópico lan/broadcast/comandos. Los sensores deben suscribirse a este tópico para poder recibir los comandos y asi poder empezar con la publicación de las metricas con el comando START, y detener la publicación con el comando STOP. 
+El controlador, en su bucle principal, se queda esperando a la entrada del usuario, y según esta, publica el comando correspondiente en el tópico de comandos, como se puede apreciar:
+
+```try:
+    while True:
+        print("\nOpciones:")
+        print("1. Iniciar Simulación (Enviar 'START')")
+        print("2. Detener Simulación (Enviar 'STOP')")
+        print("3. Salir")
+        
+        opcion = input(">>> Elige una opción: ")
+
+        if opcion == "1":
+            print(f"[>] Enviando orden 'START' a '{TOPICO_COMANDOS}'...")
+            client.publish(TOPICO_COMANDOS, "START")
+            
+        elif opcion == "2":
+            print(f"[>] Enviando orden 'STOP' a '{TOPICO_COMANDOS}'...")
+            client.publish(TOPICO_COMANDOS, "STOP")
+            
+        elif opcion == "3":
+            print("Saliendo...")
+            break
+        
+        else:
+            print("Opción no válida. Intenta con 1 o 2.")
+            
+        # Pequeña pausa para evitar rebotes
+        time.sleep(0.5)
+
+except KeyboardInterrupt:
+    print("\n[*] Controlador cerrado.")
+```
+
+Por otro lado, en los sensores, ahora se debe verificar por la bandera 'simulacion activa', la cual se modificara al recibir una publicación del controlador, como se puede ver a continuacion:
+
+```try:
+    while True:
+        # Solo entramos aquí si la bandera es True (recibimos START)
+        if simulacion_activa:
+            # 1. Generar lectura simulada
+            humedad = round(random.uniform(20.0, 30.0), 2)
+            
+            payload = {
+                "sensor_id": SENSOR_ID,
+                "valor": humedad,
+                "unidad": "%",
+                "timestamp": int(time.time())
+            }
+            
+            # 2. Publicar en el tópico de datos
+            client.publish(TOPICO_DATOS, json.dumps(payload))
+            print(f"   Enviado: {humedad}% a '{TOPICO_DATOS}'")
+            
+            # 3. Esperar
+            time.sleep(2) 
+        else:
+            # Si está en STOP, esperamos un poco para no quemar el procesador
+            time.sleep(1)
+            
+except KeyboardInterrupt:
+    print("\n[*] Programa cerrado.")
+```
+
+Como resultado, se puede apreciar como en el controlador (terminal de arriba a la izquierda) se habilita o deshabilita el broadcast hacia los demas sensores.
+
+![](consigna5/broadcast.jpeg)
+
+Al publicar los comandos 'START' o 'STOP' en un único tópico común (lan/broadcast/comandos), logramos que todos los sensores reciban la orden al mismo tiempo. Esto permitió sincronizar el inicio y fin de la transmisión de datos de todos los dispositivos simultáneamente, sin necesidad de enviar un mensaje individual a cada sensor. Se aplica broadcast correctamente, ya que se publica en el tópico común, y todos los suscriptores lo reciben.
+
 
 ## Consigna 5. Preguntas
 

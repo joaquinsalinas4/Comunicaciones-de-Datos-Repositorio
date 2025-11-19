@@ -125,9 +125,22 @@ En las imagenes se pueden apreciar, en las dos terminales de la izquierda, los d
 
 ![](consigna4/consigna-4b.jpeg)
 
-## Consigna 5
+## Consigna 5 Implementar una jerarquía de tópicos como:
 
-..
+lan/sala1/sensor/temp
+lan/sala1/sensor/hum
+lan/sala2/sensor/temp
+
+### a) Simular, en cada cliente, un sensor que genere datos (utiliza un generador de número aleatorios). Recolectar estos en una gateway/servidor suscrito a estos tópicos.
+
+![](consigna5/consigna5.jpeg)
+
+Se procede con la consigna, generando 4 archivos .py nuevos, el gateway.py, que se suscribe a los 3 sensores y recopila los datos (terminal arriba izq.), el sensor_temp_sala1.py (terminal abajo izq.), el sensor_hum_sala1.py (arriba der.), y finalmente, sensor_temp_sala2.py. Estos simulan sensores, que publican en sus tópicos correspondientes, las mediciones calculadas.
+
+![](consigna5/prueba-5.jpg)
+
+### b) Ahora nuestro cliente “central” (ahora gateway) se suscribirá y recopilará los datos generados por los sensores en archivos locales.
+
 
 ## Consigna 5. Preguntas
 

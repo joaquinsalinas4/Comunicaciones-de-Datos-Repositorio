@@ -1,12 +1,12 @@
 # Laboratorios de la materia Comunicaciones de datos
 
-## Infomarcion general del grupo
+## Información general del grupo
 
 **Nombre del Grupo**: WAN Piece
 
 **Integrantes del grupo**:
 
-- _Avila Facundo E_
+- _Avila Diaz Moreno, Facundo Emanuel
 
 - _Benavides María C_
 

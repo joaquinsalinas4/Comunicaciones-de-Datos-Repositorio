@@ -6,7 +6,7 @@
 
 **Integrantes del grupo**:
 
-- _Avila Diaz Moreno, Facundo Emanuel
+- Avila Diaz Moreno, Facundo Emanuel
 
 - _Benavides María C_
 

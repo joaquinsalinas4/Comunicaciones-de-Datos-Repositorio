@@ -173,7 +173,7 @@ Los datos llegan correctamente a Grafana, se muestran en la tabla a continuacion
 
 Luego de configurar la conexión gracias a Unity, y configurar los gráficos correspondientes para mostrar los datos, se muestra el gráfico a continuacion:
 
-![](consigna5/grafana.jpeg.jpeg)
+![](consigna5/grafana.jpeg)
 
 Como se puede apreciar en la leyenda, se indican los colores que corresponde a cada grafico, que se corresponde a cada sensor (temp_sala1, temp_sala2, hum_sala1)
 
@@ -182,7 +182,8 @@ Como se puede apreciar en la leyenda, se indican los colores que corresponde a c
 Para aplicar el broadcasting, se procede a crear otra clase controlador.py, adjuntada en el proyecto, el cual se encargara de publicar en el tópico lan/broadcast/comandos. Los sensores deben suscribirse a este tópico para poder recibir los comandos y asi poder empezar con la publicación de las metricas con el comando START, y detener la publicación con el comando STOP. 
 El controlador, en su bucle principal, se queda esperando a la entrada del usuario, y según esta, publica el comando correspondiente en el tópico de comandos, como se puede apreciar:
 
-```try:
+```
+try:
     while True:
         print("\nOpciones:")
         print("1. Iniciar Simulación (Enviar 'START')")
@@ -215,7 +216,8 @@ except KeyboardInterrupt:
 
 Por otro lado, en los sensores, ahora se debe verificar por la bandera 'simulacion activa', la cual se modificara al recibir una publicación del controlador, como se puede ver a continuacion:
 
-```try:
+```
+try:
     while True:
         # Solo entramos aquí si la bandera es True (recibimos START)
         if simulacion_activa:
